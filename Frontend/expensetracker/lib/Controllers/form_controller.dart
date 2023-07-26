@@ -1,5 +1,10 @@
+import 'package:bankingtool/Constants/consts.dart';
+import 'package:bankingtool/models/expense_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'dart:convert';
 
 class FormController extends GetxController {
   TextEditingController typeController = TextEditingController();
@@ -35,5 +40,46 @@ class FormController extends GetxController {
     print(descriptionController.text);
     clear();
     // ! : à supprimer dès que fonctionnel
+
+    ExpenseRequestModel requestModel = ExpenseRequestModel(
+      name: box.read('name'),
+      type: typeController.text,
+      context: contextController.text,
+      date: dateController.text,
+      cost: costController.text,
+      location: locationController.text,
+      description: descriptionController.text,
+    );
+
+    try {
+      // TODO : vérifier que ça marche
+      final response = await http.post(
+        Uri.parse('${dotenv.env['API_URL']}/submit_expense_form'),
+        body: requestModel.toJson(),
+      );
+      if (response.statusCode == 200) {
+        // TODO : remplir
+      } else {
+        throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
+      }
+    } catch (error) {
+      showDialog(
+        context: Get.context!,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Erreur survenue"),
+            content: Text(error.toString()),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

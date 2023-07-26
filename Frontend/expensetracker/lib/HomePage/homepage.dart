@@ -1,3 +1,4 @@
+import 'package:bankingtool/HomePage/custom_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:bankingtool/Controllers/form_controller.dart';
 import 'package:intl/intl.dart';
@@ -12,7 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> globalFormKey1 = GlobalKey<FormState>();
-  //GlobalKey<FormState> globalFormKey2 = GlobalKey<FormState>();
   final FormController _expenseFormController = Get.put(FormController());
 
   final _flowType = [
@@ -62,13 +62,6 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
                       DropdownButtonFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer le type d\'action';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         value: _selectedFlowType,
                         items: _flowType
                             .map((e) => DropdownMenuItem(
@@ -85,6 +78,13 @@ class _HomePageState extends State<HomePage> {
                           _expenseFormController.typeController.text =
                               newValue as String;
                         },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Veuillez entrer le type d\'action';
+                          }
+                          return null;
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           labelText: 'Type de flux',
                           hintText: 'Exemple : Dépense',
@@ -92,13 +92,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       DropdownButtonFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer une catégorie';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         value: _selectedContexte,
                         items: _contexte
                             .map((e) => DropdownMenuItem(
@@ -115,18 +108,25 @@ class _HomePageState extends State<HomePage> {
                           _expenseFormController.contextController.text =
                               newValue as String;
                         },
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Veuillez entrer une catégorie';
+                          }
+                          return null;
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: const InputDecoration(
                           labelText: 'Contexte',
                           hintText: 'Exemple : Personnel',
                           prefixIcon: Icon(Icons.tag),
                         ),
                       ),
-                      TextFormField(
+                      CustTextFormField(
                         controller: _expenseFormController.dateController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.calendar_month),
-                          labelText: 'Entrez la date de la transaction',
-                        ),
+                        prefixIcon: const Icon(Icons.calendar_month),
+                        labelText: 'Entrez la date de la transaction',
+                        hintText: 'Exemple : 22/11/2023',
+                        errorText: 'Veuillez entrer une date',
                         onTap: () async {
                           DateTime? date = await showDatePicker(
                               context: context,
@@ -138,60 +138,26 @@ class _HomePageState extends State<HomePage> {
                                 DateFormat('dd/MM/yyyy').format(date);
                           }
                         },
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer une date';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer un montant';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: _expenseFormController.costController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.euro),
+                      CustTextFormField(
+                          controller: _expenseFormController.costController,
+                          prefixIcon: const Icon(Icons.euro),
                           labelText: 'Entrez le montant',
                           hintText: 'Exemple : 10,00',
-                        ),
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer un lieu';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        controller: _expenseFormController.locationController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.location_on),
+                          errorText: 'Veuillez entrer un montant'),
+                      CustTextFormField(
+                          controller: _expenseFormController.locationController,
+                          prefixIcon: const Icon(Icons.location_on),
                           labelText: 'Entrez le lieu de la transaction',
                           hintText: 'Exemple : restaurant',
-                        ),
-                      ),
-                      TextFormField(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Veuillez entrer une description';
-                          }
-                          return null;
-                        },
-                        controller:
-                            _expenseFormController.descriptionController,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.description),
+                          errorText: 'Veuillez entrer un lieu'),
+                      CustTextFormField(
+                          controller:
+                              _expenseFormController.descriptionController,
+                          prefixIcon: const Icon(Icons.description),
                           labelText: 'Entrez une description',
                           hintText: 'Exemple : déjeuner avec des amis',
-                        ),
-                      ),
+                          errorText: 'Veuillez entrer une description'),
                       Container(
                         margin: const EdgeInsets.all(20),
                         child: Align(
@@ -200,6 +166,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               if (validateAndSave()) {
                                 _expenseFormController.pushData();
+                                // TODO : ajouter nettoyage du forms
                               } else {
                                 showDialog(
                                   context: Get.context!,
