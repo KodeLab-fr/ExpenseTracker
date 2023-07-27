@@ -167,6 +167,8 @@ class _HomePageState extends State<HomePage> {
                               if (validateAndSave()) {
                                 _expenseFormController.pushData();
                                 // TODO : ajouter nettoyage du forms
+
+                                globalFormKey1.currentState!.reset();
                               } else {
                                 showDialog(
                                   context: Get.context!,

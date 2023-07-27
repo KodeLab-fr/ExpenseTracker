@@ -39,6 +39,7 @@ class LoginController extends GetxController {
       }
     } catch (error) {
       // ! : à supprimer dès que fonctionnel
+      box.write('name', requestModel.name);
       clear();
       Get.to(() => const HomePage());
       // ! : à supprimer dès que fonctionnel

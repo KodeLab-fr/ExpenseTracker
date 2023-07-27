@@ -26,6 +26,8 @@ class FormController extends GetxController {
   Future<void> pushData() async {
     // ! : à supprimer dès que fonctionnel
     // ignore: avoid_print
+    print(box.read('name'));
+    // ignore: avoid_print
     print(typeController.text);
     // ignore: avoid_print
     print(contextController.text);
@@ -41,45 +43,45 @@ class FormController extends GetxController {
     clear();
     // ! : à supprimer dès que fonctionnel
 
-    ExpenseRequestModel requestModel = ExpenseRequestModel(
-      name: box.read('name'),
-      type: typeController.text,
-      context: contextController.text,
-      date: dateController.text,
-      cost: costController.text,
-      location: locationController.text,
-      description: descriptionController.text,
-    );
+    // ExpenseRequestModel requestModel = ExpenseRequestModel(
+    //   name: box.read('name'),
+    //   type: typeController.text,
+    //   context: contextController.text,
+    //   date: dateController.text,
+    //   cost: costController.text,
+    //   location: locationController.text,
+    //   description: descriptionController.text,
+    // );
 
-    try {
-      // TODO : vérifier que ça marche
-      final response = await http.post(
-        Uri.parse('${dotenv.env['API_URL']}/submit_expense_form'),
-        body: requestModel.toJson(),
-      );
-      if (response.statusCode == 200) {
-        // TODO : remplir
-      } else {
-        throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
-      }
-    } catch (error) {
-      showDialog(
-        context: Get.context!,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Erreur survenue"),
-            content: Text(error.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Get.back();
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    }
+    // try {
+    //   // TODO : vérifier que ça marche
+    //   final response = await http.post(
+    //     Uri.parse('${dotenv.env['API_URL']}/submit_expense_form'),
+    //     body: requestModel.toJson(),
+    //   );
+    //   if (response.statusCode == 200) {
+    //     // TODO : remplir
+    //   } else {
+    //     throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
+    //   }
+    // } catch (error) {
+    //   showDialog(
+    //     context: Get.context!,
+    //     builder: (BuildContext context) {
+    //       return AlertDialog(
+    //         title: const Text("Erreur survenue"),
+    //         content: Text(error.toString()),
+    //         actions: [
+    //           TextButton(
+    //             onPressed: () {
+    //               Get.back();
+    //             },
+    //             child: const Text("OK"),
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   );
+    // }
   }
 }

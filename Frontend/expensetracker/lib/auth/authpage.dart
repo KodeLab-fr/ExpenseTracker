@@ -14,7 +14,7 @@ class _AuthPageState extends State<AuthPage> {
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
   bool hidePassword = true;
   final LoginController _loginController = Get.put(LoginController());
-  
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -97,6 +97,7 @@ class _AuthPageState extends State<AuthPage> {
                       onPressed: () {
                         if (validateAndSave()) {
                           _loginController.login();
+                          globalFormKey.currentState!.reset();
                         }
                       },
                       style: ElevatedButton.styleFrom(

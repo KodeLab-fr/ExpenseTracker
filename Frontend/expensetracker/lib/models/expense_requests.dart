@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+/// Request model for the expense post to the api. Its role is to convert the informations needed to json.
 class ExpenseRequestModel {
   String name;
   String type;
@@ -33,6 +34,7 @@ class ExpenseRequestModel {
   }
 }
 
+/// Respone model for the expense post to the api. Its role is to retrieve the response from the server.
 class ExpenseResponseModel {
   String code; 
   String message;
