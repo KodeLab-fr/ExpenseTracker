@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:bankingtool/HomePage/homepage.dart';
+import 'package:bankingtool/FormPage/formpage.dart';
 import 'package:bankingtool/models/login_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -33,7 +33,7 @@ class LoginController extends GetxController {
         box.write('name', requestModel.name);
         box.write('password', requestModel.password);
         clear();
-        Get.to(() => const HomePage());
+        Get.to(() => const FormPage());
       } else {
         throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
       }
@@ -41,7 +41,7 @@ class LoginController extends GetxController {
       // ! : à supprimer dès que fonctionnel
       box.write('name', requestModel.name);
       clear();
-      Get.to(() => const HomePage());
+      Get.to(() => const FormPage());
       // ! : à supprimer dès que fonctionnel
 
       // TODO : à changer dès que fonctionnel

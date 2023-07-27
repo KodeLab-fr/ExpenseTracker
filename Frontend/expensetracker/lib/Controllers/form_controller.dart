@@ -24,24 +24,43 @@ class FormController extends GetxController {
   }
 
   Future<void> pushData() async {
-    // ! : à supprimer dès que fonctionnel
-    // ignore: avoid_print
-    print(box.read('name'));
-    // ignore: avoid_print
-    print(typeController.text);
-    // ignore: avoid_print
-    print(contextController.text);
-    // ignore: avoid_print
-    print(dateController.text);
-
-    // ignore: avoid_print
-    print(costController.text);
-    // ignore: avoid_print
-    print(locationController.text);
-    // ignore: avoid_print
-    print(descriptionController.text);
+    // ! : à changer dès que fonctionnel
+    await showDialog(
+      context: Get.context!,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Formulaire soumis !"),
+          content: Text(
+            "Type : ${typeController.text}\n"
+            "Contexte : ${contextController.text}\n"
+            "Date : ${dateController.text}\n"
+            "Coût : ${costController.text}\n"
+            "Lieu : ${locationController.text}\n"
+            "Description : ${descriptionController.text}\n",
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+    ScaffoldMessenger.of(Get.context!).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Formulaire soumis.',
+          style: TextStyle(fontSize: 18),
+        ),
+        backgroundColor: Color.fromARGB(255, 54, 63, 147),
+        duration: Duration(milliseconds: 750),
+      ),
+    );
     clear();
-    // ! : à supprimer dès que fonctionnel
+    // ! : à changer dès que fonctionnel
 
     // ExpenseRequestModel requestModel = ExpenseRequestModel(
     //   name: box.read('name'),

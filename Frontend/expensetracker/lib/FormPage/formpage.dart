@@ -1,17 +1,17 @@
-import 'package:bankingtool/HomePage/custom_formfield.dart';
+import 'package:bankingtool/FormPage/custom_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:bankingtool/Controllers/form_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class FormPage extends StatefulWidget {
+  const FormPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FormPage> createState() => _FormPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FormPageState extends State<FormPage> {
   GlobalKey<FormState> globalFormKey1 = GlobalKey<FormState>();
   final FormController _expenseFormController = Get.put(FormController());
 
@@ -163,11 +163,9 @@ class _HomePageState extends State<HomePage> {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: OutlinedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (validateAndSave()) {
-                                _expenseFormController.pushData();
-                                // TODO : ajouter nettoyage du forms
-
+                                await _expenseFormController.pushData();
                                 globalFormKey1.currentState!.reset();
                               } else {
                                 showDialog(

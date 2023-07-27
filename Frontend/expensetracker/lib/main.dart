@@ -1,4 +1,4 @@
-import 'package:bankingtool/auth/authpage.dart';
+import 'package:bankingtool/Introduction/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,7 +16,7 @@ class BankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const AuthPage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
       theme: ThemeData(
