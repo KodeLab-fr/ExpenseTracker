@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+/// Request model for the login get to the api. Its role is to convert the informations needed to json.
 class LoginRequestModel {
   String name;
   String password;
@@ -17,6 +18,7 @@ class LoginRequestModel {
   }
 }
 
+/// Respone model for the login get to the api. Its role is to retrieve the response from the server.
 class LoginResponseModel {
   final String? token;
 
