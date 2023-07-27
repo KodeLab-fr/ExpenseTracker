@@ -71,7 +71,8 @@ class _HomePageState extends State<HomePage> {
                                 color: Color.fromARGB(255, 54, 63, 147),
                               )),
                           onTap: () {
-                            Get.to(() => const AuthPage());
+                            Get.to(const AuthPage(),
+                                duration: const Duration(milliseconds: 700));
                           },
                         )
                       : GestureDetector(

@@ -33,7 +33,10 @@ class LoginController extends GetxController {
         box.write('name', requestModel.name);
         box.write('password', requestModel.password);
         clear();
-        Get.to(() => const FormPage());
+        Get.to(
+          const FormPage(),
+          duration: const Duration(milliseconds: 700),
+        );
       } else {
         throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
       }
