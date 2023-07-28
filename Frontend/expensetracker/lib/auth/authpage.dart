@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bankingtool/Controllers/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +20,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
         key: scaffoldKey,
         appBar: AppBar(
@@ -25,21 +28,19 @@ class _AuthPageState extends State<AuthPage> {
           elevation: 0,
         ),
         backgroundColor: const Color(0xFFffffff),
-        body: Container(
-          padding: const EdgeInsets.only(left: 40, right: 40),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
           child: Form(
             key: globalFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: height * 0.04),
-                const Text(
-                  "Bienvenue",
-                  style: TextStyle(fontSize: 40, color: Color(0xFF363f93)),
-                ),
-                const Text(
-                  "Authentifiez-vous !",
-                  style: TextStyle(fontSize: 40, color: Color(0xFF363f93)),
+                Text(
+                  "Bienvenue !\nAuthentifiez-vous",
+                  style: TextStyle(
+                      fontSize: Platform.isMacOS ? 40 : 35,
+                      color: const Color(0xFF363f93)),
                 ),
                 SizedBox(height: height * 0.08),
                 TextFormField(
@@ -73,8 +74,8 @@ class _AuthPageState extends State<AuthPage> {
                         });
                       },
                       icon: hidePassword
-                          ? const Icon(Icons.visibility_off)
-                          : const Icon(Icons.visibility),
+                          ? const Icon(Icons.visibility)
+                          : const Icon(Icons.visibility_off),
                     ),
                   ),
                   validator: (value) {
@@ -89,9 +90,11 @@ class _AuthPageState extends State<AuthPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Envoyer',
-                      style: TextStyle(fontSize: 35, color: Color(0xFF363f93)),
+                      style: TextStyle(
+                          fontSize: Platform.isMacOS ? 35 : 30,
+                          color: const Color(0xFF363f93)),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -102,13 +105,13 @@ class _AuthPageState extends State<AuthPage> {
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
-                        padding: const EdgeInsets.all(20),
+                        padding: EdgeInsets.all(Platform.isMacOS ? 20 : 15),
                         backgroundColor: const Color(0xFF363f93),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_forward,
                         color: Colors.white,
-                        size: 45,
+                        size: Platform.isMacOS ? 45 : 30,
                       ),
                     )
                   ],

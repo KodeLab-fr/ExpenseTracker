@@ -9,22 +9,26 @@ class IntroScreen3 extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: height * 0.18),
-            SizedBox(
-              height: height * 0.45,
-              child: SvgPicture.asset('assets/svg/auth.svg'),
-            ),
-            SizedBox(height: height * 0.1),
-            const Text(
-              'Il ne vous reste plus qu\'à vous authentifier !',
-              style: TextStyle(
-                fontSize: 19,
-                color: Color.fromARGB(255, 54, 63, 147),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: height * 0.03),
+          child: Column(
+            children: [
+              SizedBox(height: height * 0.23),
+              SizedBox(
+                height: height * 0.45,
+                child: SvgPicture.asset('assets/svg/auth.svg'),
               ),
-            ),
-          ],
+              SizedBox(height: height * 0.07),
+              const Text(
+                'Il ne vous reste plus qu\'à vous authentifier !',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromARGB(255, 54, 63, 147),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:bankingtool/Controllers/form_controller.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
+import 'dart:io';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
@@ -45,13 +46,25 @@ class _FormPageState extends State<FormPage> {
         child: ListView(
           children: [
             SizedBox(height: height * 0.1),
-            const Text(
+            Text(
               'Veuillez choisir un formulaire à remplir :',
-              style: TextStyle(fontSize: 40, color: Color(0xFF363f93)),
+              style: Platform.isIOS
+                  ? const TextStyle(fontSize: 30, color: Color(0xFF363f93))
+                  : const TextStyle(fontSize: 40, color: Color(0xFF363f93)),
             ),
             SizedBox(height: height * 0.05),
             ExpansionTile(
-              title: const Text('Ajouter une ligne'),
+              title: const Text(
+                'Ajouter une ligne',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: const Text(
+                'Enregistrer une dépense ou un crédit sur votre profil',
+                style: TextStyle(fontSize: 12),
+              ),
               leading: const CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Image(image: AssetImage('assets/img/logo_depense.png')),
@@ -192,12 +205,13 @@ class _FormPageState extends State<FormPage> {
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
-                              padding: const EdgeInsets.all(20),
+                              padding: const EdgeInsets.all(15),
                               backgroundColor: const Color(0xFF363f93),
                             ),
-                            child: const Text('Soumettre le formulaire',
+                            child: Text('Soumettre le formulaire',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 25)),
+                                    color: Colors.white,
+                                    fontSize: Platform.isIOS ? 18 : 25)),
                           ),
                         ),
                       ),

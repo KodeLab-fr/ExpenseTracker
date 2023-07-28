@@ -9,22 +9,26 @@ class IntroScreen2 extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: height * 0.18),
-            SizedBox(
-              height: height * 0.45,
-              child: SvgPicture.asset('assets/svg/expenses.svg'),
-            ),
-            SizedBox(height: height * 0.1),
-            const Text(
-              'Vous pourrez suivre vos dépenses et établir plannings et dashboards',
-              style: TextStyle(
-                fontSize: 19,
-                color: Color.fromARGB(255, 54, 63, 147),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: height * 0.03),
+          child: Column(
+            children: [
+              SizedBox(height: height * 0.20),
+              SizedBox(
+                height: height * 0.45,
+                child: SvgPicture.asset('assets/svg/expenses.svg'),
               ),
-            ),
-          ],
+              SizedBox(height: height * 0.1),
+              const Text(
+                'Suivez simplement vos dépenses et établissez plannings et dashboards',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 19,
+                  color: Color.fromARGB(255, 54, 63, 147),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
