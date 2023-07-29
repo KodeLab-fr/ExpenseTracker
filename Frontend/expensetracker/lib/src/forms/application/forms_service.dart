@@ -1,5 +1,5 @@
-import 'package:bankingtool/Constants/consts.dart';
-import 'package:bankingtool/models/expense_requests.dart';
+import 'package:bankingtool/consts.dart';
+import 'package:bankingtool/src/forms/domain/entities/expense_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

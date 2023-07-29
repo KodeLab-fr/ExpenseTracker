@@ -1,11 +1,11 @@
-import 'package:bankingtool/Introduction/screens/introscreen_1.dart';
-import 'package:bankingtool/Introduction/screens/introscreen_2.dart';
-import 'package:bankingtool/Introduction/screens/introscreen_3.dart';
+import 'package:bankingtool/src/auth/presentation/widget/introscreen_1.dart';
+import 'package:bankingtool/src/auth/presentation/widget/introscreen_2.dart';
+import 'package:bankingtool/src/auth/presentation/widget/introscreen_3.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../auth/authpage.dart';
+import 'authpage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

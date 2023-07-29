@@ -1,6 +1,6 @@
-import 'package:bankingtool/FormPage/custom_formfield.dart';
+import 'package:bankingtool/src/forms/presentation/widget/custom_formfield.dart';
 import 'package:flutter/material.dart';
-import 'package:bankingtool/Controllers/form_controller.dart';
+import 'package:bankingtool/src/forms/application/forms_service.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'dart:io';

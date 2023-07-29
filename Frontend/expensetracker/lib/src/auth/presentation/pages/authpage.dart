@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bankingtool/Controllers/login_controller.dart';
+import 'package:bankingtool/src/auth/application/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

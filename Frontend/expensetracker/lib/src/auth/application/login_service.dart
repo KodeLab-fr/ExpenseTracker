@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:bankingtool/FormPage/formpage.dart';
-import 'package:bankingtool/models/login_requests.dart';
+import 'package:bankingtool/src/forms/presentation/pages/formpage.dart';
+import 'package:bankingtool/src/auth/domain/entities/login_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
-import '../Constants/consts.dart';
+import '../../../consts.dart';
 
 class LoginController extends GetxController {
   TextEditingController nameController = TextEditingController();

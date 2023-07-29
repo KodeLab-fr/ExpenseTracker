@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 /// Request model for the expense post to the api. Its role is to convert the informations needed to json.
-class ExpenseRequestModel {
-  String name;
-  String type;
-  String context;
-  String date;
-  String cost;
-  String location;
-  String description;
+class Expense {
+  final String name;
+  final String type;
+  final String context;
+  final String date;
+  final String cost;
+  final String location;
+  final String description;
 
-  ExpenseRequestModel({
+  Expense({
     required this.name,
     required this.type,
     required this.context,
@@ -20,23 +20,23 @@ class ExpenseRequestModel {
     required this.description,
   });
 
-  Map<String, String> toJson() {
-    Map<String, String> map = {
-      'name': name,
-      'type': type,
-      'context': context,
-      'date': date,
-      'cost': cost,
-      'location': location,
-      'description': description,
-    };
-    return map;
-  }
+  // Map<String, String> toJson() {
+  //   Map<String, String> map = {
+  //     'name': name,
+  //     'type': type,
+  //     'context': context,
+  //     'date': date,
+  //     'cost': cost,
+  //     'location': location,
+  //     'description': description,
+  //   };
+  //   return map;
+  // }
 }
 
 /// Respone model for the expense post to the api. Its role is to retrieve the response from the server.
 class ExpenseResponseModel {
-  String code; 
+  String code;
   String message;
 
   ExpenseResponseModel({
