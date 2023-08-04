@@ -1,6 +1,4 @@
-import 'package:bankingtool/src/auth/presentation/widget/introscreen_1.dart';
-import 'package:bankingtool/src/auth/presentation/widget/introscreen_2.dart';
-import 'package:bankingtool/src/auth/presentation/widget/introscreen_3.dart';
+import 'package:bankingtool/src/auth/presentation/widget/introscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -36,9 +34,32 @@ class _HomePageState extends State<HomePage> {
               });
             },
             children: const [
-              IntroScreen1(),
-              IntroScreen2(),
-              IntroScreen3(),
+              IntroScreen(
+                  heightBeforeTitle: 0.1,
+                  title: 'Expense Tracker',
+                  heigthBeforeSvg: 0.07,
+                  pathSvg: 'assets/svg/project.svg',
+                  heightSvg:  0.3,
+                  heitghtAfterSvg: 0.1,
+                  message:
+                      'Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !'),
+              IntroScreen(
+                  heightBeforeTitle: 0,
+                  title: '',
+                  heigthBeforeSvg: 0.2,
+                  pathSvg: 'assets/svg/expenses.svg',
+                  heightSvg: 0.45,
+                  heitghtAfterSvg: 0.1,
+                  message:
+                      'Suivez simplement vos dépenses et établissez plannings et dashboards'),
+              IntroScreen(
+                  heightBeforeTitle: 0,
+                  title: '',
+                  heigthBeforeSvg: 0.23,
+                  pathSvg: 'assets/svg/auth.svg',
+                  heightSvg: 0.45,
+                  heitghtAfterSvg: 0.07,
+                  message: 'Il ne vous reste plus qu\'à vous authentifier !')
             ],
           ),
           Container(
