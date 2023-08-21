@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bankingtool/src/auth/application/login_service.dart';
+import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,19 +14,30 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
   bool hidePassword = true;
   final LoginController _loginController = Get.put(LoginController());
+
+  bool validateAndSave() {
+    final form = globalFormKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  void reset() {
+    globalFormKey.currentState!.reset();
+  }
 
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
         key: scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
         backgroundColor: const Color(0xFFffffff),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.05),
@@ -35,11 +46,22 @@ class _AuthPageState extends State<AuthPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: height * 0.04),
+                SizedBox(height: height * 0.1),
+                SizedBox(
+                  height: height * 0.08,
+                  child: Text(
+                    'Expense Tracker App',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: Platform.isMacOS ? 40 : 30,
+                      color: const Color(0xFF363f93),
+                    ),
+                  ),
+                ),
                 Text(
                   "Bienvenue !\nAuthentifiez-vous",
                   style: TextStyle(
-                      fontSize: Platform.isMacOS ? 40 : 35,
+                      fontSize: Platform.isMacOS ? 40 : 30,
                       color: const Color(0xFF363f93)),
                 ),
                 SizedBox(height: height * 0.08),
@@ -93,14 +115,14 @@ class _AuthPageState extends State<AuthPage> {
                     Text(
                       'Envoyer',
                       style: TextStyle(
-                          fontSize: Platform.isMacOS ? 35 : 30,
+                          fontSize: Platform.isMacOS ? 35 : 28,
                           color: const Color(0xFF363f93)),
                     ),
                     ElevatedButton(
                       onPressed: () {
                         if (validateAndSave()) {
                           _loginController.login();
-                          globalFormKey.currentState!.reset();
+                          reset();
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -120,14 +142,5 @@ class _AuthPageState extends State<AuthPage> {
             ),
           ),
         ));
-  }
-
-  bool validateAndSave() {
-    final form = globalFormKey.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
   }
 }

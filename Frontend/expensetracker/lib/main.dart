@@ -1,4 +1,8 @@
-import 'package:bankingtool/src/auth/presentation/pages/intro.dart';
+import 'package:expensetracker/shared/theme.dart';
+import 'package:expensetracker/src/auth/presentation/pages/authpage.dart';
+import 'package:expensetracker/src/auth/presentation/pages/introduction.dart';
+import 'package:expensetracker/src/auth/presentation/pages/splashscreen.dart';
+import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
@@ -16,24 +20,20 @@ class BankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const HomePage(),
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
-      theme: ThemeData(
-        colorScheme: const ColorScheme(
-          onSurface: Colors.black,
-          surface: Colors.black,
-          brightness: Brightness.light,
-          background: Colors.white,
-          primary: Color.fromARGB(255, 54, 63, 147),
-          secondary: Color.fromARGB(255, 77, 89, 194),
-          error: Colors.redAccent,
-          onPrimary: Colors.white,
-          onSecondary: Colors.white,
-          onBackground: Colors.black,
-          onError: Colors.white,
+      theme:customThemeData,
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => const SplashScreen()),
+        GetPage(
+          name: '/intro',
+          page: () => const Introduction(),
+          transition: Transition.fadeIn,
         ),
-      ),
+        GetPage(name: '/auth', page: () => const AuthPage()),
+        GetPage(name: '/form', page: () => const FormPage()),
+      ],
     );
   }
 }
