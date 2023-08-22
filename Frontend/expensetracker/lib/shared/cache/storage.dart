@@ -7,14 +7,13 @@ mixin CacheManager {
     await box.write(CacheManagerKey.token.toString(), token);
     return true;
   }
-
   String? getToken() {
     return box.read(CacheManagerKey.token.toString());
   }
-
   Future<void> removeToken() async {
     await box.remove(CacheManagerKey.token.toString());
   }
+
   Future<void> clearCache() async {
     await box.erase();
   }

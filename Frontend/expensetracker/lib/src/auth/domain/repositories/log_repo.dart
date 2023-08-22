@@ -1,9 +1,12 @@
 import 'package:expensetracker/src/auth/domain/models/sign_in.dart';
+import 'package:get/get.dart';
 
-abstract class ExpenseRepo {
-  Future<SignInInfo> signIn(SignInInfo expense);
+import '../models/sign_up.dart';
 
-  Future<SignInInfo> signUp(SignInInfo expense);
+abstract class LogRepo {
+  Future<Response> signIn(SignInInfo info);
+
+  Future<Response> signUp(SignUpInfo info);
 
   Future<SignInInfo> signInAuto(String token);
 }

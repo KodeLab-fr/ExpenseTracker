@@ -1,4 +1,4 @@
-import 'package:expensetracker/src/auth/presentation/widget/introscreen.dart';
+import 'package:expensetracker/src/auth/presentation/widgets/introscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

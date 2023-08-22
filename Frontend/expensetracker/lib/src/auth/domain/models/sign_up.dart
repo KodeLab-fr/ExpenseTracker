@@ -1,25 +1,25 @@
-//TODO: Implement SignUpInfo model
-
 class SignUpInfo {
+  String username;
+  String email;
+  String password;
 
-  // String name;
-  // String password;
+  SignUpInfo({
+    required this.username,
+    required this.email,
+    required this.password,
+  });
 
-  // SignUpInfo({
-  //   required this.name,
-  //   required this.password,
-  // });
+  Map<String, String> toJson() {
+    Map<String, String> map = {
+      'username': username,
+      'email': email,
+      'password': password,
+    };
+    return map;
+  }
 
-  // Map<String, String> toJson() {
-  //   Map<String, String> map = {
-  //     'authorization': 'Basic ${base64Encode('$name:$password'.codeUnits)}'
-  //   };
-  //   return map;
-  // }
-
-  // @override
-  // String toString() {
-  //   return 'name: $name, password: $password';
-  // }
-
+  @override
+  String toString() {
+    return 'name: $username, email: $email, password: $password';
+  }
 }

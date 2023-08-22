@@ -4,7 +4,7 @@ import 'dart:convert';
 class SignInInfo {
   String name;
   String password;
-  
+
   SignInInfo({
     required this.name,
     required this.password,
