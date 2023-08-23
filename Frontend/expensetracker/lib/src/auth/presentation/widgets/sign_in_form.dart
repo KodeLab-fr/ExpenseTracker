@@ -6,7 +6,8 @@ import 'package:expensetracker/src/auth/presentation/controllers/sign_in.dart';
 
 ///All visual elements of the sign in form
 class SignInForm extends StatefulWidget {
-  const SignInForm({super.key});
+  final VoidCallback toggleForm;
+  const SignInForm({super.key, required this.toggleForm});
 
   @override
   State<SignInForm> createState() => _SignInFormState();
@@ -42,7 +43,7 @@ class _SignInFormState extends State<SignInForm> {
   ///Submits the form to the controller
   void submit() {
     if (validateAndSave()) {
-      _loginController.login();
+      _loginController.signIn();
       reset();
     }
   }
@@ -90,7 +91,6 @@ class _SignInFormState extends State<SignInForm> {
             },
             maxLength: 25,
           ),
-          SizedBox(height: height * 0.04),
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: _loginController.passwordController,
@@ -115,7 +115,20 @@ class _SignInFormState extends State<SignInForm> {
             },
             obscureText: hidePassword,
           ),
-          SizedBox(height: height * 0.07),
+          SizedBox(height: height * 0.03),
+          Row(children: [
+            const Text('Pas encore de compte ? '),
+            GestureDetector(
+              onTap: () {
+                widget.toggleForm();
+              },
+              child: const Text(
+                'S\'inscrire',
+                style: TextStyle(color: Color(0xFF363f93)),
+              ),
+            ),
+          ]),
+          SizedBox(height: height * 0.04),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -1,3 +1,7 @@
+
+
+import 'dart:convert';
+
 class SignUpInfo {
   String username;
   String email;
@@ -9,7 +13,18 @@ class SignUpInfo {
     required this.password,
   });
 
-  Map<String, String> toJson() {
+  factory SignUpInfo.fromMap(Map<String, dynamic> map) {
+    return SignUpInfo(
+      username: map['username'] as String,
+      email: map['email'] as String,
+      password: map['password'] as String,
+    );
+  }
+
+  factory SignUpInfo.fromJson(String source) =>
+      SignUpInfo.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  Map<String, String> toMap() {
     Map<String, String> map = {
       'username': username,
       'email': email,
@@ -17,6 +32,8 @@ class SignUpInfo {
     };
     return map;
   }
+
+  String toJson() => json.encode(toMap());
 
   @override
   String toString() {

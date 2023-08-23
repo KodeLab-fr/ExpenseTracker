@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import '../controllers/sign_up.dart';
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({super.key});
+  final VoidCallback toggleForm;
+  const SignUpForm({super.key, required this.toggleForm});
 
   @override
   State<SignUpForm> createState() => _SignUpFormState();
@@ -14,9 +15,9 @@ class SignUpForm extends StatefulWidget {
 class _SignUpFormState extends State<SignUpForm> {
   bool hidePassword = true;
   final SignUpController _signUpController = Get.put(SignUpController());
-
   GlobalKey<FormState> globalFormKeySU = GlobalKey<FormState>();
 
+  ///Measures if the form is valid and saves it
   bool validateAndSave() {
     final form = globalFormKeySU.currentState;
     if (form!.validate()) {
@@ -26,6 +27,7 @@ class _SignUpFormState extends State<SignUpForm> {
     return false;
   }
 
+  ///Resets the form to its initial state
   void reset() {
     globalFormKeySU.currentState!.reset();
   }
@@ -115,7 +117,20 @@ class _SignUpFormState extends State<SignUpForm> {
             },
             obscureText: hidePassword,
           ),
-          SizedBox(height: height * 0.07),
+          SizedBox(height: height * 0.03),
+          Row(children: [
+            const Text('Déjà un compte ? '),
+            GestureDetector(
+              onTap: () {
+                widget.toggleForm();
+              },
+              child: const Text(
+                'Se connecter',
+                style: TextStyle(color: Color(0xFF363f93)),
+              ),
+            ),
+          ]),
+          SizedBox(height: height * 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

@@ -10,12 +10,10 @@ class SignInController extends GetxController with CacheManager {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  //safety method, getx should automatically dispose controllers when they are not used
+  ///safety method, getx should automatically dispose controllers when they are not used
   @override
-  void dispose() {
-    nameController.dispose();
-    passwordController.dispose();
-    super.dispose();
+  void onClose() {
+    super.onClose();
   }
 
   /// Clear all the text fields
@@ -25,7 +23,7 @@ class SignInController extends GetxController with CacheManager {
   }
 
   /// Sign in the user with the informations given in the text fields
-  Future<void> login() async {
+  Future<void> signIn() async {
     SignInInfo requestModel = SignInInfo(
       name: nameController.text,
       password: passwordController.text,
@@ -37,7 +35,7 @@ class SignInController extends GetxController with CacheManager {
         final responseModel = ResponseModel.fromJson(response.body);
         saveToken(responseModel.message);
         dispose();
-        Get.toNamed('/form');
+        Get.offAllNamed('/form');
       } else {
         throw Exception(response.body);
       }

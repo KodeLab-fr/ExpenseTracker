@@ -12,13 +12,10 @@ class SignUpController extends GetxController with CacheManager {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  //safety method, getx should automatically dispose controllers when they are not used
+  ///safety method, getx should automatically dispose controllers when they are not used
   @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
+  void onClose() {
+    super.onClose();
   }
 
   /// Clear all the text fields
@@ -41,13 +38,13 @@ class SignUpController extends GetxController with CacheManager {
       if (response.statusCode == 200) {
         final responseModel = ResponseModel.fromJson(response.body);
         if (responseModel.code == 0) {
-          showDialog(
+          await showDialog(
             context: Get.context!,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: const Text("Victoire !"),
+                title: const Text("Création de compte réussie !"),
                 content: const Text(
-                    'Création de compte réussie, veuillez vous connecter avec vos nouveaux identifiants.'),
+                    'Veuillez vous connecter avec vos nouveaux identifiants.'),
                 actions: [
                   TextButton(
                     onPressed: () {
@@ -61,7 +58,7 @@ class SignUpController extends GetxController with CacheManager {
           );
         }
         dispose();
-        Get.toNamed('/auth');
+        Get.offAllNamed('/');
       } else {
         throw Exception(response.body);
       }

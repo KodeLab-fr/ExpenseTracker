@@ -1,3 +1,4 @@
+///Server response model
 class ResponseModel {
   int code; 
   String message;
