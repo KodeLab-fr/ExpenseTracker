@@ -20,4 +20,3 @@ mixin CacheManager {
 }
 
 enum CacheManagerKey { token }
-

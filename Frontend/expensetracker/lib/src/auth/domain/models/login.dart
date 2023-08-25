@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 ///Request model for the login get to the api. Its role is to convert the informations needed to json.
-class SignInInfo {
+class LoginInfo {
   String name;
   String password;
 
-  SignInInfo({
+  LoginInfo({
     required this.name,
     required this.password,
   });
 
-  factory SignInInfo.fromJson(String source) =>
-      SignInInfo.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory LoginInfo.fromJson(String source) =>
+      LoginInfo.fromMap(json.decode(source) as Map<String, dynamic>);
 
-  factory SignInInfo.fromMap(Map<String, dynamic> map) {
-    return SignInInfo(
+  factory LoginInfo.fromMap(Map<String, dynamic> map) {
+    return LoginInfo(
       name: map['name'] as String,
       password: map['password'] as String,
     );

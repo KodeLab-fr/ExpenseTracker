@@ -13,8 +13,8 @@ class Introduction extends StatefulWidget {
 class _IntroductionState extends State<Introduction> {
   final PageController _controller = PageController();
   bool onLastPage = false;
-  final double height = MediaQuery.of(Get.context!).size.height;
-  final double width = MediaQuery.of(Get.context!).size.width;
+  final height = Get.height;
+  final width = Get.width;
 
   @override
   void dispose() {
@@ -39,26 +39,29 @@ class _IntroductionState extends State<Introduction> {
               }
             });
           },
-          children: const [
+          children: [
             IntroScreen(
               pathSvg: 'assets/svg/project.svg',
-              heightSvg: 0.45,
-              heitghtText: 0.1,
-              message:
-                  'Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !',
+              heightSvg: GetPlatform.isDesktop ? 0.45 : 0.35,
+              heitghtText: 0.05,
+              title: "Un projet étudiant",
+              text:
+                  "Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !",
             ),
             IntroScreen(
               pathSvg: 'assets/svg/expenses.svg',
-              heightSvg: 0.45,
+              heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
               heitghtText: 0.1,
-              message:
+              title: "Suivi d'activités",
+              text:
                   'Suivez simplement vos dépenses et établissez plannings et dashboards',
             ),
             IntroScreen(
               pathSvg: 'assets/svg/auth.svg',
-              heightSvg: 0.45,
+              heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
               heitghtText: 0.1,
-              message: 'Il ne vous reste plus qu\'à vous authentifier !',
+              title: "Compte personnel",
+              text: "Il ne vous reste plus qu'à vous authentifier !",
             ),
           ],
         ),

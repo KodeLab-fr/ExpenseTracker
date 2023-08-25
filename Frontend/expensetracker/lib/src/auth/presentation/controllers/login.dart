@@ -1,11 +1,13 @@
 import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response.dart';
-import 'package:expensetracker/src/auth/domain/models/sign_in.dart';
+import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-class SignInController extends GetxController with CacheManager {
+import '../../../../shared/models/errors.dart';
+
+class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -24,39 +26,23 @@ class SignInController extends GetxController with CacheManager {
 
   /// Sign in the user with the informations given in the text fields
   Future<void> signIn() async {
-    SignInInfo requestModel = SignInInfo(
+    LoginInfo requestModel = LoginInfo(
       name: nameController.text,
       password: passwordController.text,
     );
 
     try {
-      final response = await _logRepoImplementation.signIn(requestModel);
+      final response = await _logRepoImplementation.login(requestModel);
       if (response.statusCode == 200) {
         final responseModel = ResponseModel.fromJson(response.body);
         saveToken(responseModel.message);
         dispose();
         Get.offAllNamed('/form');
       } else {
-        throw Exception(response.body);
+        throw Exception(response.body ?? "Pas de réponse du serveur");
       }
     } catch (error) {
-      showDialog(
-        context: Get.context!,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("Erreur survenue"),
-            content: Text(error.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Get.back();
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
+      ErrorManager().showErrorDialog(error);
     }
   }
 }

@@ -1,5 +1,5 @@
-import 'package:expensetracker/src/auth/domain/models/sign_in.dart';
-import 'package:expensetracker/src/auth/domain/models/sign_up.dart';
+import 'package:expensetracker/src/auth/domain/models/login.dart';
+import 'package:expensetracker/src/auth/domain/models/register.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class LogRepoImplementation implements LogRepo {
   ///Makes a call to the API to sign in the user
   @override
-  Future<Response> signIn(SignInInfo requestModel) async {
+  Future<Response> login(LoginInfo requestModel) async {
     final GetConnect connect = GetConnect();
     try {
       final response = await connect.get(
@@ -23,7 +23,7 @@ class LogRepoImplementation implements LogRepo {
 
   ///Makes a call to the API to sign up the user
   @override
-  Future<Response> signUp(SignUpInfo info) async {
+  Future<Response> register(RegisterInfo info) async {
     final GetConnect connect = GetConnect();
     try {
       final response = await connect.post(
@@ -38,7 +38,18 @@ class LogRepoImplementation implements LogRepo {
 
   ///Makes a call to the API to sign in the user using the token stored in cache
   @override
-  Future<SignInInfo> signInAuto(String token) async {
+  Future<LoginInfo> autoLogin(String token) async {
+    throw UnimplementedError();
+  }
+
+  ///Makes a call to the API to send the OTP code to the user
+  @override
+  Future<Response> resendCode() async {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Response> verifyCode(String code) async {
     throw UnimplementedError();
   }
 }

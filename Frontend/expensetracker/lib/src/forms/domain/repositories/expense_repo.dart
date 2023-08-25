@@ -3,7 +3,6 @@
 import '../entities/expense_requests.dart';
 
 abstract class ExpenseRepo {
-  // TODO : Complete all elements
 
   Future<Expense> add(Expense expense);
 

@@ -1,12 +1,16 @@
-import 'package:expensetracker/src/auth/domain/models/sign_in.dart';
+import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:get/get.dart';
 
-import '../models/sign_up.dart';
+import '../models/register.dart';
 
 abstract class LogRepo {
-  Future<Response> signIn(SignInInfo info);
+  Future<Response> login(LoginInfo info);
 
-  Future<Response> signUp(SignUpInfo info);
+  Future<Response> register(RegisterInfo info);
 
-  Future<SignInInfo> signInAuto(String token);
+  Future<LoginInfo> autoLogin(String token);
+
+  Future<Response> verifyCode(String code);
+
+  Future<Response> resendCode();
 }

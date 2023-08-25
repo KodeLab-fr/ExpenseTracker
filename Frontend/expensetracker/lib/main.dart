@@ -1,7 +1,9 @@
 import 'package:expensetracker/shared/theme.dart';
-import 'package:expensetracker/src/auth/presentation/pages/authpage.dart';
+import 'package:expensetracker/src/auth/presentation/pages/authentication.dart';
 import 'package:expensetracker/src/auth/presentation/pages/introduction.dart';
+import 'package:expensetracker/src/auth/presentation/pages/otp.dart';
 import 'package:expensetracker/src/auth/presentation/pages/splashscreen.dart';
+import 'package:expensetracker/src/auth/presentation/pages/unknown.dart';
 import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -22,8 +24,9 @@ class BankApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
-      theme:customThemeData,
+      theme: customThemeData,
       initialRoute: '/',
+      unknownRoute: GetPage(name: '/notfound', page: () => const UnknownPage()),
       getPages: [
         GetPage(name: '/', page: () => const SplashScreen()),
         GetPage(
@@ -32,7 +35,9 @@ class BankApp extends StatelessWidget {
           transition: Transition.fadeIn,
         ),
         GetPage(name: '/auth', page: () => const AuthPage()),
+        GetPage(name: '/otp', page: () => const Otp()),
         GetPage(name: '/form', page: () => const FormPage()),
+        GetPage(name: '/notfound', page: () => const UnknownPage()),
       ],
     );
   }

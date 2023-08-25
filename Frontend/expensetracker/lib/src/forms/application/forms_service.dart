@@ -73,13 +73,11 @@ class FormController extends GetxController {
     // );
 
     // try {
-    //   // TODO : vérifier que ça marche
     //   final response = await http.post(
     //     Uri.parse('${dotenv.env['API_URL']}/submit_expense_form'),
     //     body: requestModel.toJson(),
     //   );
     //   if (response.statusCode == 200) {
-    //     // TODO : remplir
     //   } else {
     //     throw jsonDecode(response.body)["message"] ?? "Erreur inconnue";
     //   }

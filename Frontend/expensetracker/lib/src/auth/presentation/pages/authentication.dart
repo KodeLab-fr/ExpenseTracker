@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/sign_in_form.dart';
-import '../widgets/sign_up_form.dart';
+import 'package:get/get.dart';
+import '../widgets/login_form.dart';
+import '../widgets/register_form.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -11,25 +12,25 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  bool isSignUpFormVisible = true; 
+  bool isRegisterFormVisible = true;
 
   void toggleForm() {
     setState(() {
-      isSignUpFormVisible = !isSignUpFormVisible;
+      isRegisterFormVisible = !isRegisterFormVisible;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
+    final width = Get.width;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: const Color(0xFFffffff),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-        child: isSignUpFormVisible
-            ? SignUpForm(toggleForm: toggleForm)
-            : SignInForm(toggleForm: toggleForm),
+        child: isRegisterFormVisible
+            ? RegisterForm(toggleForm: toggleForm)
+            : LoginForm(toggleForm: toggleForm),
       ),
     );
   }

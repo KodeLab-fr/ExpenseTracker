@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  final double height = MediaQuery.of(Get.context!).size.height;
+  final height = Get.height;
 
   @override
   void initState() {
