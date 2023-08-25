@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 
-import '../controllers/register.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/register.dart';
 
 class RegisterForm extends StatefulWidget {
   final VoidCallback toggleForm;
@@ -53,7 +53,7 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
           ),
           Text(
-            "Bienvenue !\nCréez votre utilisateur",
+            'Bienvenue !\nCréez votre utilisateur',
             style: TextStyle(
                 fontSize: Platform.isMacOS ? 40 : 30,
                 color: const Color(0xFF363f93)),

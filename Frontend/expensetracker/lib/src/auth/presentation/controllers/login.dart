@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-import '../../../../shared/models/errors.dart';
+import 'package:expensetracker/shared/models/errors.dart';
 
 class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  ///safety method, getx should automatically dispose controllers when they are not used
+  ///safety method, getx should dispose controllers when they are not used
   @override
   void onClose() {
     super.onClose();
@@ -39,7 +39,7 @@ class LoginController extends GetxController with CacheManager {
         dispose();
         Get.offAllNamed('/form');
       } else {
-        throw Exception(response.body ?? "Pas de réponse du serveur");
+        throw Exception(response.body ?? 'Pas de réponse du serveur');
       }
     } catch (error) {
       ErrorManager().showErrorDialog(error);

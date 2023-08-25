@@ -5,18 +5,18 @@ class ErrorManager {
   /// Show a dialog with the error message
   void showErrorDialog(Object error) {
     Get.defaultDialog(
-      title: "Erreur survenue",
+      title: 'Erreur survenue',
       titlePadding: const EdgeInsets.only(top: 14, bottom: 10),
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Text(error.toString().replaceAll("Exception: ", "")),
+        child: Text(error.toString().replaceAll('Exception: ', '')),
       ),
       actions: [
         TextButton(
           onPressed: () {
             Get.back();
           },
-          child: const Text("OK",
+          child: const Text('OK',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
         ),
       ],
@@ -27,7 +27,7 @@ class ErrorManager {
   void showErrorSnackBar(Object error) {
     Get.snackbar(
       'Erreur survenue',
-      error.toString().replaceAll("Exception: ", ""),
+      error.toString().replaceAll('Exception: ', ''),
       backgroundColor: const Color(0xFFE57373),
       colorText: Colors.white,
       snackPosition: SnackPosition.TOP,

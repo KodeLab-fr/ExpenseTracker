@@ -1,6 +1,6 @@
 
-import '../../domain/entities/expense_requests.dart';
-import '../../domain/repositories/expense_repo.dart';
+import 'package:expensetracker/src/forms/domain/entities/expense_requests.dart';
+import 'package:expensetracker/src/forms/domain/repositories/expense_repo.dart';
 
 class ExpenseRepoImpl implements ExpenseRepo {
 

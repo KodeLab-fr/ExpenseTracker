@@ -17,19 +17,19 @@ class _FormPageState extends State<FormPage> {
   final FormController _expenseFormController = Get.put(FormController());
 
   final _flowType = [
-    "Dépense",
-    "Crédit",
+    'Dépense',
+    'Crédit',
   ];
-  String? _selectedFlowType = "Dépense";
+  String? _selectedFlowType = 'Dépense';
 
   final _contexte = [
-    "Alimentaire",
-    "Perso",
-    "Pro",
-    "Info",
-    "Autre",
+    'Alimentaire',
+    'Perso',
+    'Pro',
+    'Info',
+    'Autre',
   ];
-  String? _selectedContexte = "Alimentaire";
+  String? _selectedContexte = 'Alimentaire';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _FormPageState extends State<FormPage> {
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Accueil",
+        title: const Text('Accueil',
             style: TextStyle(color: Colors.white, fontSize: 25)),
         backgroundColor: const Color(0xFF363f93),
       ),
@@ -186,15 +186,16 @@ class _FormPageState extends State<FormPage> {
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       title:
-                                          const Text("Remplir tous les champs"),
+                                          const Text('Remplir tous les champs'),
                                       content: const Text(
-                                          'Veuillez remplir tous les champs souligés en rouge'),
+                                        'Veuillez remplir tous les champs.',
+                                      ),
                                       actions: [
                                         TextButton(
                                           onPressed: () {
                                             Get.back();
                                           },
-                                          child: const Text("OK"),
+                                          child: const Text('OK'),
                                         ),
                                       ],
                                     );

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-/// Request model for the expense post to the api. Its role is to convert the informations needed to json.
+/// Request model for the expense post to the api. 
 class Expense {
   final String name;
   final String type;
@@ -34,7 +34,7 @@ class Expense {
   // }
 }
 
-/// Respone model for the expense post to the api. Its role is to retrieve the response from the server.
+/// Respone model for the expense post to the api. 
 class ExpenseResponseModel {
   String code;
   String message;
@@ -47,8 +47,8 @@ class ExpenseResponseModel {
   factory ExpenseResponseModel.fromJson(String response) {
     dynamic json = jsonDecode(response);
     return ExpenseResponseModel(
-      code: json['code'] ?? " ",
-      message: json['message'] ?? " ",
+      code: json['code'] ?? ' ',
+      message: json['message'] ?? ' ',
     );
   }
 }

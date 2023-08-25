@@ -44,9 +44,10 @@ class _IntroductionState extends State<Introduction> {
               pathSvg: 'assets/svg/project.svg',
               heightSvg: GetPlatform.isDesktop ? 0.45 : 0.35,
               heitghtText: 0.05,
-              title: "Un projet étudiant",
+              title: 'Un projet étudiant',
               text:
-                  "Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !",
+                  '''
+Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !''',
             ),
             IntroScreen(
               pathSvg: 'assets/svg/expenses.svg',
@@ -54,13 +55,14 @@ class _IntroductionState extends State<Introduction> {
               heitghtText: 0.1,
               title: "Suivi d'activités",
               text:
-                  'Suivez simplement vos dépenses et établissez plannings et dashboards',
+                  '''
+Suivez simplement vos dépenses et établissez plannings et dashboards''',
             ),
             IntroScreen(
               pathSvg: 'assets/svg/auth.svg',
               heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
               heitghtText: 0.1,
-              title: "Compte personnel",
+              title: 'Compte personnel',
               text: "Il ne vous reste plus qu'à vous authentifier !",
             ),
           ],

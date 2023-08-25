@@ -2,8 +2,8 @@ import 'package:expensetracker/shared/models/errors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../shared/models/server_response.dart';
-import '../../data/log_repo_impl.dart';
+import 'package:expensetracker/shared/models/server_response.dart';
+import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 
 class CodeController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
@@ -47,7 +47,7 @@ class CodeController extends GetxController {
         if (responseModel.code == 0) {
           Get.snackbar(
             'Création de compte réussie !',
-            'Vous pourrez désormais utiliser ces identifiants pour vous connecter.',
+            'Vous pourrez désormais utiliser ces identifiants.',
             backgroundColor: const Color(0xFF363f93),
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
@@ -57,7 +57,7 @@ class CodeController extends GetxController {
           Get.offAllNamed('/form');
         }
       } else {
-        throw Exception(response.body ?? "Pas de réponse du serveur");
+        throw Exception(response.body ?? 'Pas de réponse du serveur');
       }
     } catch (error) {
       reset();

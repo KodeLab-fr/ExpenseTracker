@@ -29,21 +29,21 @@ class FormController extends GetxController {
       context: Get.context!,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Formulaire soumis !"),
+          title: const Text('Formulaire soumis !'),
           content: Text(
-            "Type : ${typeController.text}\n"
-            "Contexte : ${contextController.text}\n"
-            "Date : ${dateController.text}\n"
-            "Coût : ${costController.text}\n"
-            "Lieu : ${locationController.text}\n"
-            "Description : ${descriptionController.text}\n",
+            'Type : ${typeController.text}\n'
+            'Contexte : ${contextController.text}\n'
+            'Date : ${dateController.text}\n'
+            'Coût : ${costController.text}\n'
+            'Lieu : ${locationController.text}\n'
+            'Description : ${descriptionController.text}\n',
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Get.back();
               },
-              child: const Text("OK"),
+              child: const Text('OK'),
             ),
           ],
         );

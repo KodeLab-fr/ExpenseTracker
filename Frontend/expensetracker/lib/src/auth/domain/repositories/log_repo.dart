@@ -1,7 +1,7 @@
 import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:get/get.dart';
 
-import '../models/register.dart';
+import 'package:expensetracker/src/auth/domain/models/register.dart';
 
 abstract class LogRepo {
   Future<Response> login(LoginInfo info);

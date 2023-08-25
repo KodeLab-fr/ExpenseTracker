@@ -11,7 +11,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 
 Future<void> main() async {
-  dotenv.load(fileName: ".env");
+  dotenv.load(fileName: '.env');
   await GetStorage.init();
   runApp(const BankApp());
 }

@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           Text(
-            "Bienvenue !\nAuthentifiez-vous",
+            'Bienvenue !\nAuthentifiez-vous',
             style: TextStyle(
                 fontSize: Platform.isMacOS ? 40 : 30,
                 color: const Color(0xFF363f93)),

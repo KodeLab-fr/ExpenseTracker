@@ -4,7 +4,7 @@ import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
-/// This class is used to implement the log repository by defining the contents of the methods
+/// This class is used to implement the log repository by defining the content
 class LogRepoImplementation implements LogRepo {
   ///Makes a call to the API to sign in the user
   @override

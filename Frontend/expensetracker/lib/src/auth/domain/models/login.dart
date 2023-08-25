@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-///Request model for the login get to the api. Its role is to convert the informations needed to json.
+///Request model for the login get to the api.
 class LoginInfo {
   String name;
   String password;
