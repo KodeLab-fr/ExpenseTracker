@@ -1,8 +1,8 @@
 import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:expensetracker/shared/config.dart';
 
 /// This class is used to implement the log repository by defining the content
 class LogRepoImplementation implements LogRepo {
@@ -12,7 +12,7 @@ class LogRepoImplementation implements LogRepo {
     final GetConnect connect = GetConnect();
     try {
       final response = await connect.get(
-        '${dotenv.env['API_URL']}/auth',
+        '${ConfigEnvironments.getCurrentEnvironmentUrl()}/auth',
         headers: requestModel.toMap(),
       );
       return response;
@@ -27,7 +27,7 @@ class LogRepoImplementation implements LogRepo {
     final GetConnect connect = GetConnect();
     try {
       final response = await connect.post(
-        '${dotenv.env['API_URL']}/user',
+        '${ConfigEnvironments.getCurrentEnvironmentUrl()}/user',
         info.toMap(),
       );
       return response;

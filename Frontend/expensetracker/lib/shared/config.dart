@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Environments {
   static const String LOCAL = 'local';
@@ -16,7 +17,7 @@ class ConfigEnvironments {
     },
     {
       'env': Environments.DEV,
-      'url': '',
+      'url': '${dotenv.env['API_URL']}',
     },
     {
       'env': Environments.QAS,
@@ -28,10 +29,14 @@ class ConfigEnvironments {
     },
   ];
 
-  static Map<String, String> getEnvironments() {
+  static Map<String, String> getEnvironment() {
     return _availableEnvironments.firstWhere(
       (d) => d['env'] == _currentEnvironments,
     );
+  }
+
+  static String getCurrentEnvironmentUrl() {
+    return getEnvironment()['url']!;
   }
 }
 
@@ -40,7 +45,7 @@ class EnvironmentsBadge extends StatelessWidget {
   const EnvironmentsBadge({super.key, required this.child});
   @override
   Widget build(BuildContext context) {
-    var env = ConfigEnvironments.getEnvironments()['env'];
+    var env = ConfigEnvironments.getEnvironment()['env'];
     return env != Environments.PRODUCTION
         ? Banner(
             location: BannerLocation.topStart,
