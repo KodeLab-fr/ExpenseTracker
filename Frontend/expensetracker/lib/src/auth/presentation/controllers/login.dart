@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-import 'package:expensetracker/shared/models/errors.dart';
+import 'package:expensetracker/shared/components/errors.dart';
 
 class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();

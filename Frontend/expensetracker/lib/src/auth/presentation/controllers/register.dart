@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-import 'package:expensetracker/shared/models/errors.dart';
+import 'package:expensetracker/shared/components/errors.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 
 class RegisterController extends GetxController with CacheManager {

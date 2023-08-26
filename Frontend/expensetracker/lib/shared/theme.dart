@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData customThemeData = ThemeData(
+ThemeData theme = ThemeData(
   colorScheme: const ColorScheme(
     onSurface: Colors.black,
     surface: Colors.black,
@@ -15,4 +15,3 @@ ThemeData customThemeData = ThemeData(
     onError: Colors.white,
   ),
 );
- 
