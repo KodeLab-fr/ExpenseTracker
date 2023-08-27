@@ -12,6 +12,32 @@ class LoginController extends GetxController with CacheManager {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+  final _obscureText = true.obs;
+
+  bool get obscureText => _obscureText.value;
+
+  ///Switches the visibility of the password in the field
+  void toggle() {
+    _obscureText.value = !obscureText;
+    update();
+  }
+
+  ///Resets the form to its initial state
+  void reset() {
+    globalFormKey.currentState!.reset();
+  }
+
+  ///Measures if the form is valid and saves it
+  bool validateAndSave() {
+    final form = globalFormKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
   ///safety method, getx should dispose controllers when they are not used
   @override
   void onClose() {
@@ -25,24 +51,26 @@ class LoginController extends GetxController with CacheManager {
   }
 
   /// Sign in the user with the informations given in the text fields
-  Future<void> signIn() async {
-    LoginInfo requestModel = LoginInfo(
-      name: nameController.text,
-      password: passwordController.text,
-    );
-
-    try {
-      final response = await _logRepoImplementation.login(requestModel);
-      if (response.statusCode == 200) {
-        final responseModel = ResponseModel.fromJson(response.body);
-        saveToken(responseModel.message);
-        dispose();
-        Get.offAllNamed('/form');
-      } else {
-        throw Exception(response.body ?? 'Pas de réponse du serveur');
+  Future<void> login() async {
+    if (validateAndSave()) {
+      LoginInfo requestModel = LoginInfo(
+        name: nameController.text,
+        password: passwordController.text,
+      );
+      reset();
+      try {
+        final response = await _logRepoImplementation.login(requestModel);
+        if (response.statusCode == 202) {
+          final responseModel = ResponseModel.fromJson(response.body);
+          saveToken(responseModel.message);
+          dispose();
+          Get.offAllNamed('/form');
+        } else {
+          throw Exception(response.body ?? 'Pas de réponse du serveur');
+        }
+      } catch (error) {
+        ErrorManager().showErrorDialog(error);
       }
-    } catch (error) {
-      ErrorManager().showErrorDialog(error);
     }
   }
 }

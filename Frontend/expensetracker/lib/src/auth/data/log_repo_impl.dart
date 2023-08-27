@@ -11,8 +11,9 @@ class LogRepoImplementation with CacheManager implements LogRepo {
   @override
   Future<Response> login(LoginInfo info) async {
     try {
-      final response = await GetConnect().get(
+      final response = await GetConnect().post(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/login',
+        {},
         headers: info.toMap(),
       );
       return response;

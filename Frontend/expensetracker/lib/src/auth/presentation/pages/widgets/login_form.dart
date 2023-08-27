@@ -5,54 +5,15 @@ import 'package:get/get.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/login.dart';
 
 ///All visual elements of the sign in form
-class LoginForm extends StatefulWidget {
+class LoginForm extends GetView<LoginController> {
   final VoidCallback toggleForm;
   const LoginForm({super.key, required this.toggleForm});
-
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  final LoginController _loginController = Get.put(LoginController());
-  GlobalKey<FormState> globalFormKeySI = GlobalKey<FormState>();
-  bool hidePassword = true;
-
-  ///Switches the visibility of the password in the field
-  void switchVisibility() {
-    setState(() {
-      hidePassword = !hidePassword;
-    });
-  }
-
-  ///Resets the form to its initial state
-  void reset() {
-    globalFormKeySI.currentState!.reset();
-  }
-
-  ///Measures if the form is valid and saves it
-  bool validateAndSave() {
-    final form = globalFormKeySI.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  ///Submits the form to the controller
-  void submit() {
-    if (validateAndSave()) {
-      _loginController.signIn();
-      reset();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final height = Get.height;
     return Form(
-      key: globalFormKeySI,
+      key: controller.globalFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -77,7 +38,7 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: height * 0.08),
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: _loginController.nameController,
+            controller: controller.nameController,
             autocorrect: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.person),
@@ -91,30 +52,30 @@ class _LoginFormState extends State<LoginForm> {
             },
             maxLength: 25,
           ),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: _loginController.passwordController,
-            autocorrect: false,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.lock),
-              labelText: 'Entrez votre mot de passe',
-              suffixIcon: IconButton(
-                onPressed: () {
-                  switchVisibility();
+          Obx(() => TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: controller.passwordController,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock),
+                  labelText: 'Entrez votre mot de passe',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      controller.toggle();
+                    },
+                    icon: controller.obscureText
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Veuillez entrer un mdp';
+                  }
+                  return null;
                 },
-                icon: hidePassword
-                    ? const Icon(Icons.visibility)
-                    : const Icon(Icons.visibility_off),
-              ),
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Veuillez entrer un mdp';
-              }
-              return null;
-            },
-            obscureText: hidePassword,
-          ),
+                obscureText: controller.obscureText,
+              )),
           SizedBox(height: height * 0.03),
           Row(children: [
             const Text(
@@ -123,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             GestureDetector(
               onTap: () {
-                widget.toggleForm();
+                toggleForm();
               },
               child: const Text(
                 'S\'inscrire',
@@ -143,7 +104,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  submit();
+                  controller.login();
                 },
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
