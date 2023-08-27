@@ -13,6 +13,32 @@ class RegisterController extends GetxController with CacheManager {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  final _obscureText = true.obs;
+
+  bool get obscureText => _obscureText.value;
+
+  void toggle() {
+    _obscureText.value = !obscureText;
+    update();
+  }
+
+  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
+  ///Resets the form to its initial state
+  void reset() {
+    globalFormKey.currentState!.reset();
+  }
+
+  ///Measures if the form is valid and saves it
+  bool validateAndSave() {
+    final form = globalFormKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
   ///safety method, getx should dispose controllers when they are not used
   @override
   void onClose() {
@@ -27,26 +53,29 @@ class RegisterController extends GetxController with CacheManager {
   }
 
   /// Sign up the user with the informations given in the text fields
-  Future<void> signUp() async {
-    RegisterInfo requestModel = RegisterInfo(
-      username: nameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-    );
-
-    try {
-      final response = await _logRepoImplementation.register(requestModel);
-      if (response.statusCode == 200) {
-        final responseModel = ResponseModel.fromJson(response.body);
-        if (responseModel.code == 0) {
-          dispose();
-          Get.toNamed('/otp');
+  Future<void> register() async {
+    if (validateAndSave()) {
+      RegisterInfo requestModel = RegisterInfo(
+        username: nameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      clear();
+      reset();
+      try {
+        final response = await _logRepoImplementation.register(requestModel);
+        if (response.statusCode == 202) {
+          final responseModel = ResponseModel.fromJson(response.body);
+          if (responseModel.code == 0) {
+            saveToken(responseModel.message);
+            Get.toNamed('/otp');
+          }
+        } else {
+          throw Exception(response.body ?? 'Pas de réponse du serveur');
         }
-      } else {
-        throw Exception(response.body ?? 'Pas de réponse du serveur');
+      } catch (error) {
+        ErrorManager().showErrorDialog(error);
       }
-    } catch (error) {
-      ErrorManager().showErrorDialog(error);
     }
   }
 }

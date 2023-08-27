@@ -18,7 +18,7 @@ class CodeController extends GetxController {
   Future<void> resendCode() async {
     try {
       final response = await _logRepoImplementation.resendCode();
-      if (response.statusCode == 200) {
+      if (response.statusCode == 202) {
         final responseModel = ResponseModel.fromJson(response.body);
         if (responseModel.code == 0) {
           Get.snackbar(
@@ -42,13 +42,13 @@ class CodeController extends GetxController {
   Future<void> verifyCode() async {
     try {
       final response = await _logRepoImplementation.verifyCode(code.text);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 202) {
         final responseModel = ResponseModel.fromJson(response.body);
         if (responseModel.code == 0) {
           Get.snackbar(
             'Création de compte réussie !',
             'Vous pourrez désormais utiliser ces identifiants.',
-            backgroundColor: const Color(0xFF363f93),
+            backgroundColor: const Color.fromARGB(255, 54, 147, 90),
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
             duration: const Duration(seconds: 3),
@@ -61,7 +61,7 @@ class CodeController extends GetxController {
       }
     } catch (error) {
       reset();
-      ErrorManager().showErrorSnackBar(error);
+      ErrorManager().showErrorDialog(error);
     }
   }
 }

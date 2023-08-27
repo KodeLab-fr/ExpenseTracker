@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class UnknownPage extends StatelessWidget {
+class UnknownPage extends GetView {
   const UnknownPage({super.key});
 
   @override

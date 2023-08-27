@@ -4,39 +4,15 @@ import 'package:get/get.dart';
 
 import 'package:expensetracker/src/auth/presentation/controllers/register.dart';
 
-class RegisterForm extends StatefulWidget {
+class RegisterForm extends GetView<RegisterController> {
   final VoidCallback toggleForm;
   const RegisterForm({super.key, required this.toggleForm});
-
-  @override
-  State<RegisterForm> createState() => _RegisterFormState();
-}
-
-class _RegisterFormState extends State<RegisterForm> {
-  bool hidePassword = true;
-  final RegisterController _registerController = Get.put(RegisterController());
-  GlobalKey<FormState> globalFormKeySU = GlobalKey<FormState>();
-
-  ///Measures if the form is valid and saves it
-  bool validateAndSave() {
-    final form = globalFormKeySU.currentState;
-    if (form!.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  ///Resets the form to its initial state
-  void reset() {
-    globalFormKeySU.currentState!.reset();
-  }
 
   @override
   Widget build(BuildContext context) {
     final height = Get.height;
     return Form(
-      key: globalFormKeySU,
+      key: controller.globalFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -61,7 +37,7 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(height: height * 0.08),
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: _registerController.nameController,
+            controller: controller.nameController,
             autocorrect: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.person),
@@ -77,7 +53,7 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: _registerController.emailController,
+            controller: controller.emailController,
             autocorrect: false,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.email),
@@ -91,39 +67,37 @@ class _RegisterFormState extends State<RegisterForm> {
             },
             maxLength: 25,
           ),
-          TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: _registerController.passwordController,
-            autocorrect: false,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.lock),
-              labelText: 'Entrez un mot de passe',
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    hidePassword = !hidePassword;
-                  });
+          Obx(() => TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                controller: controller.passwordController,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.lock),
+                  labelText: 'Entrez un mot de passe',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      controller.toggle();
+                    },
+                    icon: controller.obscureText
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Veuillez entrer votre mdp';
+                  }
+                  return null;
                 },
-                icon: hidePassword
-                    ? const Icon(Icons.visibility)
-                    : const Icon(Icons.visibility_off),
-              ),
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Veuillez entrer votre mdp';
-              }
-              return null;
-            },
-            obscureText: hidePassword,
-          ),
+                obscureText: controller.obscureText,
+              )),
           SizedBox(height: height * 0.03),
           Row(children: [
             const Text('Déjà un compte ? ',
                 style: TextStyle(color: Colors.black38)),
             GestureDetector(
               onTap: () {
-                widget.toggleForm();
+                toggleForm();
               },
               child: const Text(
                 'Se connecter',
@@ -143,10 +117,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (validateAndSave()) {
-                    _registerController.signUp();
-                    reset();
-                  }
+                  controller.register();
                 },
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),

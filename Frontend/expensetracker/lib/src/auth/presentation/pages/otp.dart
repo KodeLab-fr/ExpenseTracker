@@ -5,20 +5,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-class Otp extends StatefulWidget {
+class Otp extends GetView<CodeController>{
   const Otp({super.key});
 
-  @override
-  State<Otp> createState() => _OtpState();
-}
-
-class _OtpState extends State<Otp> {
-  final CodeController _codeController = Get.put(CodeController());
   @override
   Widget build(BuildContext context) {
     final height = Get.height;
     final width = Get.width;
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -27,7 +20,7 @@ class _OtpState extends State<Otp> {
             color: Colors.black38,
           ),
           onPressed: () {
-            _codeController.reset();
+            controller.reset();
             Get.back();
           },
         ),
@@ -64,7 +57,7 @@ class _OtpState extends State<Otp> {
           SizedBox(height: height * 0.04),
           Center(
             child: Pinput(
-              controller: _codeController.code,
+              controller: controller.code,
               length: 6,
               showCursor: true,
               defaultPinTheme: PinTheme(
@@ -91,11 +84,6 @@ class _OtpState extends State<Otp> {
                   color: Color(0xFF363f93),
                 ),
               ),
-              // onSubmitted: (value) {
-              //   setState(() {
-              //     _codeController.code.text = value;
-              //   });
-              // },
             ),
           ),
           SizedBox(height: height * 0.04),
@@ -104,14 +92,14 @@ class _OtpState extends State<Otp> {
             child: CustomButton(
               text: 'Soumettre ce code',
               onPressed: () {
-                _codeController.verifyCode();
+                controller.verifyCode();
               },
             ),
           ),
           SizedBox(height: height * 0.03),
           GestureDetector(
             onTap: () {
-              _codeController.resendCode();
+              controller.resendCode();
             },
             child: const Text(
               'Vous n\'avez pas reçu de code ?',

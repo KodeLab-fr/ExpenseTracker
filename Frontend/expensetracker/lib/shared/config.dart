@@ -9,7 +9,7 @@ class Environments {
 }
 
 class ConfigEnvironments {
-  static const String _currentEnvironments = Environments.LOCAL;
+  static const String _currentEnvironments = Environments.DEV;
   static final List<Map<String, String>> _availableEnvironments = [
     {
       'env': Environments.LOCAL,

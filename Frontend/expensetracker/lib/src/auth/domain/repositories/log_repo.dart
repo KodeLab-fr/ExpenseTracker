@@ -8,7 +8,7 @@ abstract class LogRepo {
 
   Future<Response> register(RegisterInfo info);
 
-  Future<LoginInfo> autoLogin(String token);
+  Future<Response> autoLogin(String token);
 
   Future<Response> verifyCode(String code);
 

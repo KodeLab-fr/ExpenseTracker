@@ -1,3 +1,6 @@
+import 'package:expensetracker/src/auth/presentation/bindings/auth.dart';
+import 'package:expensetracker/src/auth/presentation/bindings/code.dart';
+import 'package:expensetracker/src/auth/presentation/bindings/intro.dart';
 import 'package:expensetracker/src/auth/presentation/pages/authentication.dart';
 import 'package:expensetracker/src/auth/presentation/pages/introduction.dart';
 import 'package:expensetracker/src/auth/presentation/pages/otp.dart';
@@ -31,19 +34,21 @@ class AppPages {
       name: _Paths.INTRO,
       page: () => const Introduction(),
       transition: Transition.fadeIn,
+      binding: IntroControllerBinding(),
     ),
     GetPage(
       name: _Paths.AUTH,
       page: () => const AuthPage(),
+      binding: AuthControllersBinding(),
     ),
     GetPage(
       name: _Paths.OTP,
       page: () => const Otp(),
+      binding: CodeControllerBinding(),
     ),
     GetPage(
       name: _Paths.FORM,
       page: () => const FormPage(),
     ),
-    
   ];
 }
