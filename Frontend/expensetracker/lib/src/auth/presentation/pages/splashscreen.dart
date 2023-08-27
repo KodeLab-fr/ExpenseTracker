@@ -1,28 +1,26 @@
 import 'package:expensetracker/shared/config.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  final height = Get.height;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.toNamed('/intro');
-    });
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+        future: controller.initRoutes(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return waitingView();
+          } else {
+            return waitingView();
+          }
+        });
   }
 
-  @override
-  Widget build(BuildContext context) {
+  EnvironmentsBadge waitingView() {
+    final height = Get.height;
     return EnvironmentsBadge(
       child: Scaffold(
         body: Container(

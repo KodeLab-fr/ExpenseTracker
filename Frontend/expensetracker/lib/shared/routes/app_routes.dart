@@ -8,6 +8,7 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const FORM = _Paths.FORM;
   static const NOTFOUND = _Paths.NOTFOUND;
+  static const NOCONNEXION = _Paths.NOCONNEXION;
 }
 
 abstract class _Paths {
@@ -18,4 +19,5 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const FORM = '/form';
   static const NOTFOUND = '/notfound';
+  static const NOCONNEXION = '/noconnexion';
 }

@@ -10,6 +10,8 @@ analyzer:
     always_use_package_imports: error
     unnecessary_statements: info
     lines_longer_than_80_chars: warning
+    avoid_empty_else: warning
+    empty_catches: warning
 
 linter:
   rules:
@@ -19,3 +21,5 @@ linter:
     always_use_package_imports: true
     unnecessary_statements: true
     lines_longer_than_80_chars: true
+    avoid_empty_else: true
+    empty_catches: true
