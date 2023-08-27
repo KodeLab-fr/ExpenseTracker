@@ -13,19 +13,19 @@ class ConfigEnvironments {
   static final List<Map<String, String>> _availableEnvironments = [
     {
       'env': Environments.LOCAL,
-      'url': 'http://localhost:8080/api/',
+      'url': '${dotenv.env['API_URL_LOCAL']}',
     },
     {
       'env': Environments.DEV,
-      'url': '${dotenv.env['API_URL']}',
+      'url': '${dotenv.env['API_URL_DEV']}',
     },
     {
       'env': Environments.QAS,
-      'url': '',
+      'url': '${dotenv.env['API_URL_QAS']}',
     },
     {
       'env': Environments.PRODUCTION,
-      'url': '',
+      'url': '${dotenv.env['API_URL_PROD']}',
     },
   ];
 
