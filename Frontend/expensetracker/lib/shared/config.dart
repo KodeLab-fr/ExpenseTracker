@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Environments {
-  static const String LOCAL = 'local';
-  static const String DEV = 'dev';
+  static const String LOCAL = 'LOCAL';
+  static const String DEV = 'DEV';
   static const String QAS = 'QAS';
-  static const String PRODUCTION = 'prod';
+  static const String PRODUCTION = 'PROD';
 }
 
 class ConfigEnvironments {

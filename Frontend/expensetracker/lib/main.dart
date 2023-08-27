@@ -10,7 +10,7 @@ Future<void> main() async {
   await GetStorage.init();
   runApp(
     GetMaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
       theme: theme,
       initialRoute: AppPages.INITIAL,

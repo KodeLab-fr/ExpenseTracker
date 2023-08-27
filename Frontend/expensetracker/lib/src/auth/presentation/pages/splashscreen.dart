@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,35 +23,37 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 54, 63, 147),
-              Color.fromARGB(255, 189, 101, 220),
-            ],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.monetization_on,
-            color: Colors.white,
-            size: height * 0.15,
-          ),
-          SizedBox(height: height * 0.03),
-          const Text(
-            'Expense Tracker',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              fontStyle: FontStyle.italic,
+    return EnvironmentsBadge(
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 54, 63, 147),
+                Color.fromARGB(255, 189, 101, 220),
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
             ),
           ),
-        ]),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Icon(
+              Icons.monetization_on,
+              color: Colors.white,
+              size: height * 0.15,
+            ),
+            SizedBox(height: height * 0.03),
+            const Text(
+              'Expense Tracker',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 32,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }

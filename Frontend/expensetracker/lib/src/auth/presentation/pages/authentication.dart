@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/login_form.dart';
@@ -23,14 +24,16 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     final width = Get.width;
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: const Color(0xFFffffff),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-        child: isRegisterFormVisible
-            ? RegisterForm(toggleForm: toggleForm)
-            : LoginForm(toggleForm: toggleForm),
+    return EnvironmentsBadge(
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: const Color(0xFFffffff),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+          child: isRegisterFormVisible
+              ? RegisterForm(toggleForm: toggleForm)
+              : LoginForm(toggleForm: toggleForm),
+        ),
       ),
     );
   }
