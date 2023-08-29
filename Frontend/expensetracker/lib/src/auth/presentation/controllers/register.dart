@@ -1,5 +1,6 @@
 import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
@@ -9,6 +10,8 @@ import 'package:expensetracker/src/auth/domain/models/register.dart';
 
 class RegisterController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
+  final AuthController _authController = Get.find();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,6 +30,7 @@ class RegisterController extends GetxController with CacheManager {
   ///Resets the form to its initial state
   void reset() {
     globalFormKey.currentState!.reset();
+    clear();
   }
 
   ///Measures if the form is valid and saves it
@@ -54,13 +58,13 @@ class RegisterController extends GetxController with CacheManager {
 
   /// Sign up the user with the informations given in the text fields
   Future<void> register() async {
+    _authController.toggleObscureScreen();
     if (validateAndSave()) {
       RegisterInfo requestModel = RegisterInfo(
         username: nameController.text,
         email: emailController.text,
         password: passwordController.text,
       );
-      clear();
       reset();
       try {
         final response = await _logRepoImplementation.register(requestModel);
@@ -68,9 +72,11 @@ class RegisterController extends GetxController with CacheManager {
           final responseModel = ResponseModel.fromJson(response.body);
           if (responseModel.code == 0) {
             saveToken(responseModel.message);
+            _authController.toggleObscureScreen();
             Get.toNamed('/otp');
           }
         } else {
+          _authController.toggleObscureScreen();
           throw Exception(response.body ?? 'Pas de réponse du serveur');
         }
       } catch (error) {

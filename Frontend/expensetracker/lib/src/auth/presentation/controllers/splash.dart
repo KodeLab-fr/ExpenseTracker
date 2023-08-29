@@ -28,13 +28,12 @@ class SplashController extends GetxController with CacheManager {
         final response = await _logRepoImplementation.autoLogin(token);
         if (response.statusCode == 200) {
           final responseModel = ResponseModel.fromJson(response.body);
-          //TODO: needs to be changed by 0 in api
-          if (responseModel.code == 200) {
+          if (responseModel.code == 0) {
             Get.offNamed('/form');
-          } else if (responseModel.code == 401) {
-            removeToken();
-            Get.toNamed('/intro');
           }
+        } else if (response.statusCode == 401) {
+          removeToken();
+          Get.toNamed('/intro');
         } else {
           if (response.body == null) {
             Get.toNamed('/notfound');

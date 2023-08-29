@@ -1,6 +1,7 @@
 import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response.dart';
 import 'package:expensetracker/src/auth/domain/models/login.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
@@ -9,6 +10,8 @@ import 'package:expensetracker/shared/components/errors.dart';
 
 class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
+  final AuthController _authController = Get.find();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -52,6 +55,7 @@ class LoginController extends GetxController with CacheManager {
 
   /// Sign in the user with the informations given in the text fields
   Future<void> login() async {
+    _authController.toggleObscureScreen();
     if (validateAndSave()) {
       LoginInfo requestModel = LoginInfo(
         name: nameController.text,
@@ -63,9 +67,11 @@ class LoginController extends GetxController with CacheManager {
         if (response.statusCode == 202) {
           final responseModel = ResponseModel.fromJson(response.body);
           saveToken(responseModel.message);
+          _authController.toggleObscureScreen();
           dispose();
           Get.offAllNamed('/form');
         } else {
+          _authController.toggleObscureScreen();
           throw Exception(response.body ?? 'Pas de réponse du serveur');
         }
       } catch (error) {
