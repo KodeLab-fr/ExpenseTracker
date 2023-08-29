@@ -31,24 +31,22 @@ class Introduction extends GetView<PageController> {
                 pathSvg: 'assets/svg/project.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.35,
                 heitghtText: 0.05,
-                title: 'Un projet étudiant',
-                text: '''
-    Expense Tracker est avant tout un projet étudiant, tout retour est bienvenu !''',
+                title: 'intro-1_title'.tr,
+                text: 'intro-1_text'.tr,
               ),
               IntroScreen(
                 pathSvg: 'assets/svg/expenses.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
                 heitghtText: 0.1,
-                title: "Suivi d'activités",
-                text: '''
-    Suivez simplement vos dépenses et établissez plannings et dashboards''',
+                title: 'intro-2_title'.tr,
+                text: 'intro-2_text'.tr,
               ),
               IntroScreen(
                 pathSvg: 'assets/svg/auth.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
                 heitghtText: 0.1,
-                title: 'Compte personnel',
-                text: "Il ne vous reste plus qu'à vous authentifier !",
+                title: 'intro-3_title'.tr,
+                text: 'intro-3_text'.tr,
               ),
             ],
           ),
@@ -60,8 +58,8 @@ class Introduction extends GetView<PageController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                child: const Text('Passer',
-                    style: TextStyle(
+                child: Text('intro-skip'.tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       color: Color.fromARGB(255, 54, 63, 147),
                     )),
@@ -84,8 +82,8 @@ class Introduction extends GetView<PageController> {
                 ),
               ),
               GestureDetector(
-                child: const Text('Suivant',
-                    style: TextStyle(
+                child: Text('intro-next'.tr,
+                    style: const TextStyle(
                       fontSize: 20,
                       color: Color.fromARGB(255, 54, 63, 147),
                     )),

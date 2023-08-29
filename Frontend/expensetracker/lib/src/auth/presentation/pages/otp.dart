@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-class Otp extends GetView<CodeController>{
+class Otp extends GetView<CodeController> {
   const Otp({super.key});
 
   @override
@@ -36,9 +36,9 @@ class Otp extends GetView<CodeController>{
               child: SvgPicture.asset('assets/svg/otp.svg'),
             ),
             SizedBox(height: height * 0.05),
-            const Text(
-              "Vérification de l'e-mail",
-              style: TextStyle(
+            Text(
+              'otp-title'.tr,
+              style: const TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF363f93),
@@ -47,10 +47,10 @@ class Otp extends GetView<CodeController>{
             SizedBox(height: height * 0.02),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-              child: const Text(
-                'Entrez le code à 6 chiffres envoyé à votre adresse',
+              child: Text(
+                'otp-text'.tr,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black38,
                 ),
@@ -92,7 +92,7 @@ class Otp extends GetView<CodeController>{
             SizedBox(
               height: height * 0.06,
               child: CustomButton(
-                text: 'Soumettre ce code',
+                text: 'otp-button'.tr,
                 onPressed: () {
                   controller.verifyCode();
                 },
@@ -103,9 +103,9 @@ class Otp extends GetView<CodeController>{
               onTap: () {
                 controller.resendCode();
               },
-              child: const Text(
-                'Vous n\'avez pas reçu de code ?',
-                style: TextStyle(
+              child: Text(
+                'otp-resend'.tr,
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.black38,
                 ),

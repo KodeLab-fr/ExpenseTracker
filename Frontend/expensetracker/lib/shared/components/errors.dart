@@ -5,7 +5,7 @@ class ErrorManager {
   /// Show a dialog with the error message
   void showErrorDialog(Object error) {
     Get.defaultDialog(
-      title: 'Erreur survenue',
+      title: 'error_title'.tr,
       titlePadding: const EdgeInsets.only(top: 14, bottom: 10),
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -16,8 +16,10 @@ class ErrorManager {
           onPressed: () {
             Get.back();
           },
-          child: const Text('OK',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          child: Text(
+            'ok'.tr,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ),
       ],
     );

@@ -72,7 +72,7 @@ class LoginController extends GetxController with CacheManager {
           Get.offAllNamed('/form');
         } else {
           _authController.toggleObscureScreen();
-          throw Exception(response.body ?? 'Pas de réponse du serveur');
+          throw Exception(response.body ?? 'no_response_server'.tr);
         }
       } catch (error) {
         ErrorManager().showErrorDialog(error);

@@ -77,7 +77,7 @@ class RegisterController extends GetxController with CacheManager {
           }
         } else {
           _authController.toggleObscureScreen();
-          throw Exception(response.body ?? 'Pas de réponse du serveur');
+          throw Exception(response.body ?? 'no_response_server'.tr);
         }
       } catch (error) {
         ErrorManager().showErrorDialog(error);

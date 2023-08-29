@@ -21,7 +21,7 @@ class LoginForm extends GetView<LoginController> {
           SizedBox(
             height: height * 0.08,
             child: Text(
-              'Expense Tracker App',
+              'app-title'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: Platform.isMacOS ? 40 : 30,
@@ -30,7 +30,7 @@ class LoginForm extends GetView<LoginController> {
             ),
           ),
           Text(
-            'Bienvenue !\nAuthentifiez-vous',
+            'login-title'.tr,
             style: TextStyle(
                 fontSize: Platform.isMacOS ? 40 : 30,
                 color: const Color(0xFF363f93)),
@@ -40,17 +40,17 @@ class LoginForm extends GetView<LoginController> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.nameController,
             autocorrect: false,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              labelText: 'Entrez votre nom',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.person),
+              labelText: 'login-id'.tr,
             ),
             validator: (value) {
               if (value!.length < 3) {
-                return 'Veuillez entrer un nom plus long';
+                return 'login-id_validator'.tr;
               }
               return null;
             },
-            maxLength: 25,
+            maxLength: 30,
           ),
           Obx(() => TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -58,7 +58,7 @@ class LoginForm extends GetView<LoginController> {
                 autocorrect: false,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
-                  labelText: 'Entrez votre mot de passe',
+                  labelText: 'login-password'.tr,
                   suffixIcon: IconButton(
                     onPressed: () {
                       controller.toggle();
@@ -69,8 +69,8 @@ class LoginForm extends GetView<LoginController> {
                   ),
                 ),
                 validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Veuillez entrer un mdp';
+                  if (value!.length < 8) {
+                    return 'login-password_validator'.tr;
                   }
                   return null;
                 },
@@ -78,17 +78,17 @@ class LoginForm extends GetView<LoginController> {
               )),
           SizedBox(height: height * 0.03),
           Row(children: [
-            const Text(
-              'Pas encore de compte ? ',
-              style: TextStyle(color: Colors.black38),
+            Text(
+              'login-no_account'.tr,
+              style: const TextStyle(color: Colors.black38),
             ),
             GestureDetector(
               onTap: () {
                 toggleForm();
               },
-              child: const Text(
-                'S\'inscrire',
-                style: TextStyle(color: Color(0xFF363f93)),
+              child: Text(
+                'login-text'.tr,
+                style: const TextStyle(color: Color(0xFF363f93)),
               ),
             ),
           ]),
@@ -97,7 +97,7 @@ class LoginForm extends GetView<LoginController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Envoyer',
+                'login-button'.tr,
                 style: TextStyle(
                     fontSize: Platform.isMacOS ? 35 : 28,
                     color: const Color(0xFF363f93)),

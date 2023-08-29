@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/Language/translations.dart';
 import 'package:expensetracker/shared/routes/app_pages.dart';
 import 'package:expensetracker/shared/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +14,12 @@ Future<void> main() async {
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker App',
       theme: theme,
+      translations: ExpenseTrackerTranslations(),
+      locale: Get.deviceLocale,
       initialRoute: AppPages.INITIAL,
       unknownRoute: AppPages.NOTFOUND,
       getPages: AppPages.routes,
     ),
   );
 }
+ 

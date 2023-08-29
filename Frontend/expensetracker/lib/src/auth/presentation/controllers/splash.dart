@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:expensetracker/shared/cache/storage.dart';
 import 'package:expensetracker/shared/components/errors.dart';
 import 'package:expensetracker/shared/models/server_response.dart';

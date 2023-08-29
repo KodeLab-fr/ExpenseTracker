@@ -49,9 +49,7 @@ class NetworkController extends GetxController {
       Get.offAllNamed('/');
     } else {
       obscureScreen = false;
-      ErrorManager().showErrorSnackBar(
-        'Veuillez vérifier votre connexion et réessayer.',
-      );
+      ErrorManager().showErrorSnackBar('check_connexion'.tr);
     }
   }
 }

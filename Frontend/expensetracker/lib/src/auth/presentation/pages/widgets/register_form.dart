@@ -20,7 +20,7 @@ class RegisterForm extends GetView<RegisterController> {
           SizedBox(
             height: height * 0.08,
             child: Text(
-              'Expense Tracker App',
+              'app-title'.tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: Platform.isMacOS ? 40 : 30,
@@ -29,7 +29,7 @@ class RegisterForm extends GetView<RegisterController> {
             ),
           ),
           Text(
-            'Bienvenue !\nCréez votre utilisateur',
+            'register-title'.tr,
             style: TextStyle(
                 fontSize: Platform.isMacOS ? 40 : 30,
                 color: const Color(0xFF363f93)),
@@ -39,13 +39,13 @@ class RegisterForm extends GetView<RegisterController> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.nameController,
             autocorrect: false,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.person),
-              labelText: 'Entrez un nom',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.person),
+              labelText: 'register-name'.tr,
             ),
             validator: (value) {
               if (value!.length < 3) {
-                return 'Veuillez entrer un nom plus long';
+                return 'register-name_validator'.tr;
               }
               return null;
             },
@@ -55,13 +55,13 @@ class RegisterForm extends GetView<RegisterController> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.emailController,
             autocorrect: false,
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.email),
-              labelText: 'Entrez un email',
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.email),
+              labelText: 'register-email'.tr,
             ),
             validator: (value) {
               if (value!.length < 3) {
-                return 'Veuillez entrer un email plus long';
+                return 'register-email_validator'.tr;
               }
               return null;
             },
@@ -73,7 +73,7 @@ class RegisterForm extends GetView<RegisterController> {
                 autocorrect: false,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock),
-                  labelText: 'Entrez un mot de passe',
+                  labelText: 'register-password'.tr,
                   suffixIcon: IconButton(
                     onPressed: () {
                       controller.toggle();
@@ -85,7 +85,7 @@ class RegisterForm extends GetView<RegisterController> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Veuillez entrer votre mdp';
+                    return 'register-password_validator'.tr;
                   }
                   return null;
                 },
@@ -93,15 +93,15 @@ class RegisterForm extends GetView<RegisterController> {
               )),
           SizedBox(height: height * 0.03),
           Row(children: [
-            const Text('Déjà un compte ? ',
-                style: TextStyle(color: Colors.black38)),
+            Text('register-have_account'.tr,
+                style: const TextStyle(color: Colors.black38)),
             GestureDetector(
               onTap: () {
                 toggleForm();
               },
-              child: const Text(
-                'Se connecter',
-                style: TextStyle(color: Color(0xFF363f93)),
+              child: Text(
+                'register-text'.tr,
+                style: const TextStyle(color: Color(0xFF363f93)),
               ),
             ),
           ]),
@@ -110,7 +110,7 @@ class RegisterForm extends GetView<RegisterController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Envoyer',
+                'register-button'.tr,
                 style: TextStyle(
                     fontSize: Platform.isMacOS ? 35 : 28,
                     color: const Color(0xFF363f93)),

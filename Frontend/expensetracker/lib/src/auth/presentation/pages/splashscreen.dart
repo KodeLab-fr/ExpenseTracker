@@ -42,9 +42,9 @@ class SplashScreen extends GetView<SplashController> {
               size: height * 0.15,
             ),
             SizedBox(height: height * 0.03),
-            const Text(
-              'Expense Tracker',
-              style: TextStyle(
+            Text(
+              'splash-title'.tr,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 32,
                 fontStyle: FontStyle.italic,

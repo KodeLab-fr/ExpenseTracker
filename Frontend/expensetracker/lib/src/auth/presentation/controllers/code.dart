@@ -22,8 +22,8 @@ class CodeController extends GetxController {
         final responseModel = ResponseModel.fromJson(response.body);
         if (responseModel.code == 0) {
           Get.snackbar(
-            'Code envoyé !',
-            'Veuillez vérifier votre boîte mail et vos spams.',
+            'send_code-title'.tr,
+            'send_code-body'.tr,
             backgroundColor: const Color(0xFF363f93),
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
@@ -46,8 +46,8 @@ class CodeController extends GetxController {
         final responseModel = ResponseModel.fromJson(response.body);
         if (responseModel.code == 0) {
           Get.snackbar(
-            'Création de compte réussie !',
-            'Vous pourrez désormais utiliser ces identifiants.',
+            'create_account-title'.tr,
+            'create_account-body'.tr,
             backgroundColor: const Color.fromARGB(255, 54, 147, 90),
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
@@ -57,7 +57,7 @@ class CodeController extends GetxController {
           Get.offAllNamed('/form');
         }
       } else {
-        throw Exception(response.body ?? 'Pas de réponse du serveur');
+        throw Exception(response.body ?? 'no_response_server'.tr);
       }
     } catch (error) {
       reset();
