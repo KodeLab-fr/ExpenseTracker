@@ -45,16 +45,19 @@ class ExpenseTrackerTranslations extends Translations {
           'network-text': 'You don\'t seem to be connected to the internet. '
               'Please check your connection.',
           'network-button': 'Try again',
-
           'otp-title': 'Email verification',
           'otp-text': 'Enter the 6-digit code sent to your address',
           'otp-button': 'Submit',
           'otp-resend': 'Didn\'t receive the code? ',
-
           'splash-title': 'Expense Tracker',
           'unknown-title': 'Address not found',
           'unknown-text': 'The page you are looking for does not exist',
           'unknown-button': 'Back to home',
+          'home-home': 'Home',
+          'home-about': 'About',
+          'home-contact': 'Contact',
+          'home-settings': 'Settings',
+          'home-logout': 'Log out',
         },
         'fr_FR': {
           'error-title': 'Erreur survenue',
@@ -107,6 +110,11 @@ class ExpenseTrackerTranslations extends Translations {
           'unknown-title': 'Adresse introuvable',
           'unknown-text': 'La page que vous recherchez n\'existe pas',
           'unknown-button': 'Revenir à l\'accueil',
+          'home-home': 'Accueil',
+          'home-about': 'À propos',
+          'home-contact': 'Contact',
+          'home-settings': 'Paramètres',
+          'home-logout': 'Déconnexion',
         }
       };
 }

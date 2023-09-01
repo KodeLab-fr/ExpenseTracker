@@ -1,4 +1,4 @@
-import 'package:expensetracker/shared/Language/translations.dart';
+import 'package:expensetracker/shared/i18n/translations.dart';
 import 'package:expensetracker/shared/routes/app_pages.dart';
 import 'package:expensetracker/shared/theme.dart';
 import 'package:flutter/material.dart';

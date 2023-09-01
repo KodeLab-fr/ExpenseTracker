@@ -7,8 +7,7 @@ class HomeView extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    //final double height = MediaQuery.of(context).size.height;
-    final double width = MediaQuery.of(context).size.width;
+    final width = Get.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accueil',

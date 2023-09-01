@@ -93,7 +93,7 @@ class RegisterForm extends GetView<RegisterController> {
               )),
           SizedBox(height: height * 0.03),
           Row(children: [
-            Text('register-have_account'.tr,
+            Text('register-already_account'.tr,
                 style: const TextStyle(color: Colors.black38)),
             GestureDetector(
               onTap: () {
