@@ -6,8 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-class Otp extends GetView<CodeController> {
-  const Otp({super.key});
+class OtpView extends GetView<CodeController> {
+  const OtpView({super.key});
 
   @override
   Widget build(BuildContext context) {

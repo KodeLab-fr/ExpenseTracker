@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class UnknownPage extends GetView {
-  const UnknownPage({super.key});
+class UnknownView extends GetView {
+  const UnknownView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-import 'package:expensetracker/shared/components/errors.dart';
-
 class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   final AuthController _authController = Get.find();
@@ -62,21 +60,17 @@ class LoginController extends GetxController with CacheManager {
         password: passwordController.text,
       );
       reset();
-      try {
-        final response = await _logRepoImplementation.login(requestModel);
-        if (response.statusCode == 202) {
-          final responseModel = ResponseModel.fromJson(response.body);
-          saveToken(responseModel.message);
-          _authController.toggleObscureScreen();
-          dispose();
-          Get.offAllNamed('/form');
-        } else {
-          _authController.toggleObscureScreen();
-          throw Exception(response.body ?? 'no_response_server'.tr);
-        }
-      } catch (error) {
-        ErrorManager().showErrorDialog(error);
-      }
+      final response = await _logRepoImplementation.login(requestModel);
+      response.fold((left) {
+        _authController.toggleObscureScreen();
+        left.showErrorDialog();
+      }, (right) {
+        final responseModel = ResponseModel.fromJson(right.body);
+        saveToken(responseModel.message);
+        _authController.toggleObscureScreen();
+        dispose();
+        Get.offAllNamed('/home');
+      });
     }
   }
 }

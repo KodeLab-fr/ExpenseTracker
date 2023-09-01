@@ -1,4 +1,3 @@
-import 'package:expensetracker/shared/components/errors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,54 +13,46 @@ class CodeController extends GetxController {
     code.clear();
   }
 
-  //create a function to send the code again using resendCode method
+  ///Resend the code to the user
   Future<void> resendCode() async {
-    try {
-      final response = await _logRepoImplementation.resendCode();
-      if (response.statusCode == 202) {
-        final responseModel = ResponseModel.fromJson(response.body);
-        if (responseModel.code == 0) {
-          Get.snackbar(
-            'send_code-title'.tr,
-            'send_code-body'.tr,
-            backgroundColor: const Color(0xFF363f93),
-            colorText: Colors.white,
-            snackPosition: SnackPosition.TOP,
-            duration: const Duration(seconds: 2),
-          );
-        }
-      } else {
-        throw Exception(response.body);
+    final response = await _logRepoImplementation.resendCode();
+    response.fold((left) {
+      left.showErrorSnackBar();
+    }, (right) {
+      final responseModel = ResponseModel.fromJson(right.body);
+      if (responseModel.code == 0) {
+        Get.snackbar(
+          'send_code-title'.tr,
+          'send_code-body'.tr,
+          backgroundColor: const Color(0xFF363f93),
+          colorText: Colors.white,
+          snackPosition: SnackPosition.TOP,
+          duration: const Duration(seconds: 2),
+        );
       }
-    } catch (error) {
-      ErrorManager().showErrorSnackBar(error);
-    }
+    });
   }
 
   ///Verify the code given in the text field
   Future<void> verifyCode() async {
-    try {
-      final response = await _logRepoImplementation.verifyCode(code.text);
-      if (response.statusCode == 202) {
-        final responseModel = ResponseModel.fromJson(response.body);
-        if (responseModel.code == 0) {
-          Get.snackbar(
-            'create_account-title'.tr,
-            'create_account-body'.tr,
-            backgroundColor: const Color.fromARGB(255, 54, 147, 90),
-            colorText: Colors.white,
-            snackPosition: SnackPosition.TOP,
-            duration: const Duration(seconds: 3),
-          );
-          dispose();
-          Get.offAllNamed('/form');
-        }
-      } else {
-        throw Exception(response.body ?? 'no_response_server'.tr);
-      }
-    } catch (error) {
+    final response = await _logRepoImplementation.verifyCode(code.text);
+    response.fold((left) {
       reset();
-      ErrorManager().showErrorDialog(error);
-    }
+      left.showErrorSnackBar();
+    }, (right) {
+      reset();
+      final responseModel = ResponseModel.fromJson(right.body);
+      if (responseModel.code == 0) {
+        Get.snackbar(
+          'create_account-title'.tr,
+          'create_account-body'.tr,
+          backgroundColor: const Color.fromARGB(255, 54, 147, 90),
+          colorText: Colors.white,
+          snackPosition: SnackPosition.TOP,
+          duration: const Duration(seconds: 3),
+        );
+        Get.offAllNamed('/home');
+      }
+    });
   }
 }

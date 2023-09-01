@@ -1,9 +1,13 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ErrorManager {
+class Failure {
+  final Object error;
+  final String? code;
+  const Failure( this.error, [this.code]);
+
   /// Show a dialog with the error message
-  void showErrorDialog(Object error) {
+  void showErrorDialog() {
     Get.defaultDialog(
       title: 'error_title'.tr,
       titlePadding: const EdgeInsets.only(top: 14, bottom: 10),
@@ -26,7 +30,7 @@ class ErrorManager {
   }
 
   /// Show a snackbar with the error message
-  void showErrorSnackBar(Object error) {
+  void showErrorSnackBar() {
     Get.snackbar(
       'Erreur survenue',
       error.toString().replaceAll('Exception: ', ''),

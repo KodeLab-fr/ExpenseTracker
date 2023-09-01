@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:expensetracker/shared/components/errors.dart';
+import 'package:expensetracker/shared/errors/failures.dart';
 import 'package:get/get.dart';
 
 class NetworkController extends GetxController {
@@ -49,7 +49,7 @@ class NetworkController extends GetxController {
       Get.offAllNamed('/');
     } else {
       obscureScreen = false;
-      ErrorManager().showErrorSnackBar('check_connexion'.tr);
+      Failure('check_connexion'.tr).showErrorSnackBar();
     }
   }
 }

@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/login_form.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/register_form.dart';
 
-class AuthPage extends GetView<AuthController> {
-  const AuthPage({super.key});
+class AuthView extends GetView<AuthController> {
+  const AuthView({super.key});
 
   @override
   Widget build(BuildContext context) {

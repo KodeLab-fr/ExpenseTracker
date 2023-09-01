@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 
-import 'package:expensetracker/shared/components/errors.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 
 class RegisterController extends GetxController with CacheManager {
@@ -66,22 +65,18 @@ class RegisterController extends GetxController with CacheManager {
         password: passwordController.text,
       );
       reset();
-      try {
-        final response = await _logRepoImplementation.register(requestModel);
-        if (response.statusCode == 202) {
-          final responseModel = ResponseModel.fromJson(response.body);
-          if (responseModel.code == 0) {
-            saveToken(responseModel.message);
-            _authController.toggleObscureScreen();
-            Get.toNamed('/otp');
-          }
-        } else {
+      final response = await _logRepoImplementation.register(requestModel);
+      response.fold((left) {
+        _authController.toggleObscureScreen();
+        left.showErrorDialog();
+      }, (right) {
+        final responseModel = ResponseModel.fromJson(right.body);
+        if (responseModel.code == 0) {
+          saveToken(responseModel.message);
           _authController.toggleObscureScreen();
-          throw Exception(response.body ?? 'no_response_server'.tr);
+          Get.toNamed('/otp');
         }
-      } catch (error) {
-        ErrorManager().showErrorDialog(error);
-      }
+      });
     }
   }
 }

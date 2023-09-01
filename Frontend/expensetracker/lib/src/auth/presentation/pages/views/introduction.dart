@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Introduction extends GetView<PageController> {
-  const Introduction({super.key});
+class IntroView extends GetView<PageController> {
+  const IntroView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:expensetracker/shared/cache/storage.dart';
 import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
+import 'package:expensetracker/shared/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/config.dart';
 
@@ -9,62 +11,74 @@ import 'package:expensetracker/shared/config.dart';
 class LogRepoImplementation with CacheManager implements LogRepo {
   ///Makes a call to the API to sign in the user
   @override
-  Future<Response> login(LoginInfo info) async {
+  Future<Either<Failure, Response>> login(LoginInfo info) async {
     try {
       final response = await GetConnect().post(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/login',
         {},
         headers: info.toMap(),
       );
-      return response;
+      if (response.statusCode == 202) {
+        return Right(response);
+      } else {
+        return Left(Failure(response.body ?? 'no_response_server'.tr));
+      }
     } catch (error) {
-      throw Exception(error);
+      return Left(Failure(error));
     }
   }
 
   ///Makes a call to the API to sign up the user
   @override
-  Future<Response> register(RegisterInfo info) async {
+  Future<Either<Failure, Response>> register(RegisterInfo info) async {
     try {
       final response = await GetConnect().post(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/register',
         info.toMap(),
       );
-      return response;
+      return Right(response);
     } catch (error) {
-      throw Exception(error);
+      return Left(Failure(error));
     }
   }
 
   ///Makes a call to the API to sign in the user using the token stored in cache
   @override
-  Future<Response> autoLogin(String token) async {
+  Future<Either<Failure, Response>> autoLogin(String token) async {
     try {
       final response = await GetConnect().get(
           '${ConfigEnvironments.getCurrentEnvironmentUrl()}/test/test_token',
           query: Map<String, dynamic>.from({'token': token}));
-      return response;
+      if (response.body != null) {
+        return Right(response);
+      } else {
+        return Left(Failure('no_response_server'.tr));
+      }
     } catch (error) {
-      throw Exception(error);
+      return Left(Failure(error));
     }
   }
 
   ///Makes a call to the API to send the OTP code to the user
   @override
-  Future<Response> resendCode() async {
+  Future<Either<Failure, Response>> resendCode() async {
     try {
       final response = await GetConnect().get(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/new_code',
         query: Map<String, dynamic>.from({'token': getToken()}),
       );
-      return response;
+      if (response.statusCode == 202) {
+        return Right(response);
+      } else {
+        return Left(Failure(response.body ?? 'no_response_server'.tr));
+      }
     } catch (error) {
-      throw Exception(error);
+      return Left(Failure(error));
     }
   }
 
   @override
-  Future<Response> verifyCode(String code) async {
+  Future<Either<Failure, Response>> verifyCode(String code) async {
     try {
       final response = await GetConnect().post(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/confirm',
@@ -76,9 +90,13 @@ class LogRepoImplementation with CacheManager implements LogRepo {
           },
         ),
       );
-      return response;
+      if (response.statusCode == 202) {
+        return Right(response);
+      } else {
+        return Left(Failure(response.body ?? 'no_response_server'.tr));
+      }
     } catch (error) {
-      throw Exception(error);
+      return Left(Failure(error));
     }
   }
 }
