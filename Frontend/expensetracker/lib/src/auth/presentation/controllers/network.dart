@@ -49,7 +49,7 @@ class NetworkController extends GetxController {
       Get.offAllNamed('/');
     } else {
       obscureScreen = false;
-      Failure('check_connexion'.tr).showErrorSnackBar();
+      Failure('check_connexion'.tr, 418).showErrorSnackBar();
     }
   }
 }

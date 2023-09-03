@@ -1,10 +1,9 @@
 import 'package:expensetracker/src/home/presentation/controllers/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 
-class HeadDrawer extends GetView<HomeController> {
-  const HeadDrawer({super.key});
+class SideDrawer extends GetView<HomeController> {
+  const SideDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,28 +34,35 @@ class HeadDrawer extends GetView<HomeController> {
           ),
           ListTile(
             leading: const Icon(Icons.home),
-            title: Text('home-home'.tr),
+            title: Text('drawer-home'.tr),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.info),
-            title: Text('home-about'.tr),
+            title: Text('drawer-about'.tr),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.contact_mail),
-            title: Text('home-contact'.tr),
+            title: Text('drawer-contact'.tr),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
+            leading: const Icon(Icons.language),
+            title: Text('drawer-lang'.tr),
+            onTap: () {
+              controller.changeLangage();
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.settings),
-            title: Text('home-settings'.tr),
+            title: Text('drawer-settings'.tr),
             onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.logout),
-            title: Text('home-logout'.tr),
+            title: Text('drawer-logout'.tr),
             onTap: () => controller.logout(),
           ),
         ],

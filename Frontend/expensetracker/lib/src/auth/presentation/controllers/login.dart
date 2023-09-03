@@ -59,12 +59,25 @@ class LoginController extends GetxController with CacheManager {
         name: nameController.text,
         password: passwordController.text,
       );
-      reset();
+
       final response = await _logRepoImplementation.login(requestModel);
       response.fold((left) {
         _authController.toggleObscureScreen();
-        left.showErrorDialog();
+        if (left.code == 401) {
+          Get.snackbar(
+            'login-error_title'.tr,
+            'login-error'.tr,
+            backgroundColor: const Color(0xFFE57373),
+          );
+        } else if (left.code == 502) {
+          Get.offAllNamed('/down');
+        } else if (left.code == 418) {
+          Get.offAllNamed('/noconnexion');
+        } else {
+          Get.offAllNamed('/notfound');
+        }
       }, (right) {
+        reset();
         final responseModel = ResponseModel.fromJson(right.body);
         saveToken(responseModel.message);
         _authController.toggleObscureScreen();

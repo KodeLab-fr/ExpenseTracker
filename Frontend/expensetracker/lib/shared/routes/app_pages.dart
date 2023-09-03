@@ -2,11 +2,13 @@ import 'package:expensetracker/src/auth/presentation/bindings/auth.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/code.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/intro.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/network.dart';
+import 'package:expensetracker/src/auth/presentation/bindings/server_down.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/splash.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/authentication.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/introduction.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/network.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/otp.dart';
+import 'package:expensetracker/src/auth/presentation/pages/views/server_down.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/splashscreen.dart';
 import 'package:expensetracker/src/auth/presentation/pages/views/unknown.dart';
 import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.NOCONNEXION,
       page: () => const NetworkView(),
       binding: NetworkControllerBinding(),
+    ),
+    GetPage(
+      name: _Paths.DOWN,
+      page: () => const ServerDownView(),
+      binding: ServerDownBinding(),
     ),
   ];
 }

@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/errors/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,17 @@ class CodeController extends GetxController {
   Future<void> resendCode() async {
     final response = await _logRepoImplementation.resendCode();
     response.fold((left) {
-      left.showErrorSnackBar();
+      if (left.code == 401) {
+        Failure('failure-resend_code_401'.tr, 401).showErrorSnackBar();
+      } else if (left.code == 404) {
+        Failure('failure-resend_code_404'.tr, 404).showErrorSnackBar();
+      } else if (left.code == 502) {
+        Get.offAllNamed('/down');
+      } else if (left.code == 418) {
+        Get.offAllNamed('/noconnexion');
+      } else {
+        Get.offAllNamed('/notfound');
+      }
     }, (right) {
       final responseModel = ResponseModel.fromJson(right.body);
       if (responseModel.code == 0) {
@@ -37,8 +48,19 @@ class CodeController extends GetxController {
   Future<void> verifyCode() async {
     final response = await _logRepoImplementation.verifyCode(code.text);
     response.fold((left) {
-      reset();
-      left.showErrorSnackBar();
+      if (left.code == 401) {
+        Failure('failure-send_code_401'.tr, 401).showErrorSnackBar();
+      } else if (left.code == 402) {
+        Failure('failure-send_code_402'.tr, 402).showErrorSnackBar();
+      } else if (left.code == 404) {
+        Failure('failure-send_code_404'.tr, 404).showErrorSnackBar();
+      } else if (left.code == 502) {
+        Get.offAllNamed('/down');
+      } else if (left.code == 418) {
+        Get.offAllNamed('/noconnexion');
+      } else {
+        Get.offAllNamed('/notfound');
+      }
     }, (right) {
       reset();
       final responseModel = ResponseModel.fromJson(right.body);

@@ -1,4 +1,5 @@
 import 'package:expensetracker/src/home/data/home_repo.impl.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -9,5 +10,11 @@ class HomeController extends GetxController {
     result.fold((left) => left.showErrorSnackBar(), (right) {
       Get.offAllNamed('/auth');
     });
+  }
+
+  void changeLangage() {
+    Get.updateLocale(Get.locale == const Locale('fr')
+        ? const Locale('en')
+        : const Locale('fr'));
   }
 }

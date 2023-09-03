@@ -1,5 +1,4 @@
 import 'package:expensetracker/shared/cache/storage.dart';
-import 'package:expensetracker/shared/models/server_response.dart';
 import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
 import 'package:get/get.dart';
@@ -23,17 +22,18 @@ class SplashController extends GetxController with CacheManager {
     if (token != null) {
       final response = await _logRepoImplementation.autoLogin(token);
       response.fold((left) {
-        Get.toNamed('/noconnexion');
-      }, (right) {
-        if (right.statusCode == 200) {
-          final responseModel = ResponseModel.fromJson(right.body);
-          if (responseModel.code == 0) {
-            Get.offNamed('/home');
-          }
-        } else if (right.statusCode == 401) {
+        if (left.code == 401) {
           removeToken();
           Get.toNamed('/intro');
+        } else if (left.code == 502) {
+          Get.offAllNamed('/down');
+        } else if (left.code == 418) {
+          Get.offAllNamed('/noconnexion');
+        } else {
+          Get.offAllNamed('/notfound');
         }
+      }, (right) {
+        Get.offNamed('/home');
       });
     } else {
       Get.offNamed('/intro');

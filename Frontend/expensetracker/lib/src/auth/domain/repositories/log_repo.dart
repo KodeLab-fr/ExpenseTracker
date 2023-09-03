@@ -15,4 +15,6 @@ abstract class LogRepo {
   Future<Either<Failure, Response>> verifyCode(String code);
 
   Future<Either<Failure, Response>> resendCode();
+
+  Future<Either<Failure, Response>> checkServer();
 }

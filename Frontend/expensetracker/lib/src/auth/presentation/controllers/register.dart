@@ -64,12 +64,24 @@ class RegisterController extends GetxController with CacheManager {
         email: emailController.text,
         password: passwordController.text,
       );
-      reset();
       final response = await _logRepoImplementation.register(requestModel);
       response.fold((left) {
         _authController.toggleObscureScreen();
-        left.showErrorDialog();
+        if (left.code == 409) {
+          Get.snackbar(
+            'register-error_title'.tr,
+            'register-error_content'.tr,
+            backgroundColor: const Color(0xFFE57373),
+          );
+        } else if (left.code == 502) {
+          Get.offAllNamed('/down');
+        } else if (left.code == 418) {
+          Get.offAllNamed('/noconnexion');
+        } else {
+          Get.offAllNamed('/notfound');
+        } 
       }, (right) {
+        reset();
         final responseModel = ResponseModel.fromJson(right.body);
         if (responseModel.code == 0) {
           saveToken(responseModel.message);

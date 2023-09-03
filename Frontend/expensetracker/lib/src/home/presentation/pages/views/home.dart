@@ -10,11 +10,11 @@ class HomeView extends GetView {
     final width = Get.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Accueil',
-            style: TextStyle(color: Colors.white, fontSize: 25)),
+        title: Text('home-title'.tr,
+            style: const TextStyle(color: Colors.white, fontSize: 25)),
         backgroundColor: const Color(0xFF363f93),
       ),
-      drawer: const HeadDrawer(),
+      drawer: const SideDrawer(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: width * 0.07),
         child: const Center(child: Text('HomeScreenWorking')),

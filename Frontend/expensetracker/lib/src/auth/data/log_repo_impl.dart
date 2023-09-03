@@ -4,11 +4,14 @@ import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
 import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/shared/config.dart';
 
 /// This class is used to implement the log repository by defining the content
 class LogRepoImplementation with CacheManager implements LogRepo {
+  final _networkController = NetworkController();
+
   ///Makes a call to the API to sign in the user
   @override
   Future<Either<Failure, Response>> login(LoginInfo info) async {
@@ -20,11 +23,17 @@ class LogRepoImplementation with CacheManager implements LogRepo {
       );
       if (response.statusCode == 202) {
         return Right(response);
+      } else if (response.statusCode == 401) {
+        return Left(Failure(response.body, response.statusCode));
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
       } else {
-        return Left(Failure(response.body ?? 'no_response_server'.tr));
+        return Left(Failure(response.body, 501));
       }
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 520));
     }
   }
 
@@ -36,9 +45,19 @@ class LogRepoImplementation with CacheManager implements LogRepo {
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/register',
         info.toMap(),
       );
-      return Right(response);
+      if (response.statusCode == 202) {
+        return Right(response);
+      } else if (response.statusCode == 409) {
+        return Left(Failure(response.body, response.statusCode));
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
+      } else {
+        return Left(Failure(response.body, 501));
+      }
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 520));
     }
   }
 
@@ -47,15 +66,22 @@ class LogRepoImplementation with CacheManager implements LogRepo {
   Future<Either<Failure, Response>> autoLogin(String token) async {
     try {
       final response = await GetConnect().get(
-          '${ConfigEnvironments.getCurrentEnvironmentUrl()}/test/test_token',
-          query: Map<String, dynamic>.from({'token': token}));
-      if (response.body != null) {
+        '${ConfigEnvironments.getCurrentEnvironmentUrl()}/test/test_token',
+        query: Map<String, dynamic>.from({'token': token}),
+      );
+      if (response.statusCode == 200) {
         return Right(response);
+      } else if (response.statusCode == 401) {
+        return Left(Failure(response.body, response.statusCode));
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
       } else {
-        return Left(Failure('no_response_server'.tr));
+        return Left(Failure(response.body, 501));
       }
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 501));
     }
   }
 
@@ -69,11 +95,17 @@ class LogRepoImplementation with CacheManager implements LogRepo {
       );
       if (response.statusCode == 202) {
         return Right(response);
+      } else if (response.statusCode == 401 || response.statusCode == 404) {
+        return Left(Failure(response.body, response.statusCode));
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
       } else {
-        return Left(Failure(response.body ?? 'no_response_server'.tr));
+        return Left(Failure(response.body, 501));
       }
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 520));
     }
   }
 
@@ -92,11 +124,39 @@ class LogRepoImplementation with CacheManager implements LogRepo {
       );
       if (response.statusCode == 202) {
         return Right(response);
+      } else if (response.statusCode == 401 ||
+          response.statusCode == 402 ||
+          response.statusCode == 404) {
+        return Left(Failure(response.body, response.statusCode));
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
       } else {
-        return Left(Failure(response.body ?? 'no_response_server'.tr));
+        return Left(Failure(response.body, 501));
       }
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 520));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Response>> checkServer() async {
+    try {
+      final response = await GetConnect().get(
+        '${ConfigEnvironments.getCurrentEnvironmentUrl()}/',
+      );
+      if (response.statusCode == 200) {
+        return Right(response);
+      } else if (!await _networkController.isConnected()) {
+        return Left(Failure('check_connexion'.tr, 418));
+      } else if (response.statusCode == 502 || response.body == null) {
+        return Left(Failure('no_response_server'.tr, 502));
+      } else {
+        return Left(Failure(response.body, 501));
+      }
+    } catch (error) {
+      return Left(Failure(error, 520));
     }
   }
 }

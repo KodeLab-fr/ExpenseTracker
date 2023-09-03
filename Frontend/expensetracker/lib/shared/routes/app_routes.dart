@@ -10,6 +10,7 @@ abstract class Routes {
   static const FORM = _Paths.FORM;
   static const NOTFOUND = _Paths.NOTFOUND;
   static const NOCONNEXION = _Paths.NOCONNEXION;
+  static const DOWN = _Paths.DOWN;
 }
 
 abstract class _Paths {
@@ -22,4 +23,5 @@ abstract class _Paths {
   static const FORM = '/form';
   static const NOTFOUND = '/notfound';
   static const NOCONNEXION = '/noconnexion';
+  static const DOWN = '/down';
 }

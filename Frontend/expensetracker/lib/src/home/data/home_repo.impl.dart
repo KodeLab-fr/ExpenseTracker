@@ -10,7 +10,7 @@ class HomeRepoImpl with CacheManager implements HomeRepository {
       removeToken();
       return const Right(null);
     } catch (error) {
-      return Left(Failure(error));
+      return Left(Failure(error, 520));
     }
   }
 }

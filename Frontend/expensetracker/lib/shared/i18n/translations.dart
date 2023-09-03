@@ -13,7 +13,7 @@ class ExpenseTrackerTranslations extends Translations {
           'no_response_server': 'No response from the server',
           'check_connexion': 'Please check your connection and try again.',
           'app-title': 'Expense Tracker App',
-          'login-title': 'Welcome! Please log in.',
+          'login-title': 'Welcome!\nPlease log in.',
           'login-id': 'Enter your ID',
           'login-id_validator': 'ID needs to be longer',
           'login-password': 'Enter a password',
@@ -53,11 +53,29 @@ class ExpenseTrackerTranslations extends Translations {
           'unknown-title': 'Address not found',
           'unknown-text': 'The page you are looking for does not exist',
           'unknown-button': 'Back to home',
-          'home-home': 'Home',
-          'home-about': 'About',
-          'home-contact': 'Contact',
-          'home-settings': 'Settings',
-          'home-logout': 'Log out',
+          'drawer-home': 'Home',
+          'drawer-about': 'About',
+          'drawer-contact': 'Contact',
+          'drawer-settings': 'Settings',
+          'drawer-logout': 'Log out',
+          'login-error_title': 'Login failed',
+          'login-error_content': 'Invalid credentials, please try again.',
+          'home-title': 'Home',
+          'drawer-lang': 'Language',
+          'register-error_title': 'Registration failed',
+          'register-error_content': 'Name or email already used, please try '
+              'again.',
+          'server_down-title': 'Server down',
+          'server_down-text': 'The server is currently unavailable.'
+              ' We are trying our best to put it back on.'
+              ' Please try again later.',
+          'server_down-button': 'Try again',
+          'failure-resend_code_401':
+              'User has been deleted, please register again.',
+          'failure-resend_code_404': 'User not found, please register again.',
+          'failure-send_code_401': 'Invalid code, please try again.',
+          'failure-send_code_402': 'Code expired, please try again.',
+          'failure-send_code_404': 'User not found, please register again.',
         },
         'fr_FR': {
           'error-title': 'Erreur survenue',
@@ -110,11 +128,31 @@ class ExpenseTrackerTranslations extends Translations {
           'unknown-title': 'Adresse introuvable',
           'unknown-text': 'La page que vous recherchez n\'existe pas',
           'unknown-button': 'Revenir à l\'accueil',
-          'home-home': 'Accueil',
-          'home-about': 'À propos',
-          'home-contact': 'Contact',
-          'home-settings': 'Paramètres',
-          'home-logout': 'Déconnexion',
+          'drawer-home': 'Accueil',
+          'drawer-about': 'À propos',
+          'drawer-contact': 'Contact',
+          'drawer-settings': 'Paramètres',
+          'drawer-logout': 'Déconnexion',
+          'login-error_title': 'Échec de la connexion',
+          'login-error_content': 'Identifiants invalides, veuillez réessayer.',
+          'home-title': 'Accueil',
+          'drawer-lang': 'Langue',
+          'register-error_title': 'Échec de l\'inscription',
+          'register-error_content': 'Nom ou adresse mail déjà utilisés,'
+              ' veuillez réessayer.',
+          'server_down-title': 'Serveur indisponible',
+          'server_down-text': 'Le serveur est actuellement indisponible.'
+              ' Nous faisons de notre mieux pour le remettre en route.'
+              ' Veuillez réessayer plus tard.',
+          'server_down-button': 'Réessayer',
+          'failure-resend_code_401': 'L\'utilisateur a été supprimé,'
+              ' veuillez vous inscrire à nouveau.',
+          'failure-resend_code_404': 'Utilisateur introuvable,'
+              ' veuillez vous inscrire à nouveau.',
+          'failure-send_code_401': 'Code invalide, veuillez réessayer.',
+          'failure-send_code_402': 'Code expiré, veuillez réessayer.',
+          'failure-send_code_404': 'Utilisateur introuvable,'
+              ' veuillez vous inscrire à nouveau.',
         }
       };
 }
