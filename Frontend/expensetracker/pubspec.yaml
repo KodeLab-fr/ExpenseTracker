@@ -1,4 +1,4 @@
-name: bankingtool
+name: expensetracker
 description: A new Flutter project.
 publish_to: "none"
 version: 1.0.0+1
@@ -16,11 +16,16 @@ dependencies:
   intl: ^0.18.1
   smooth_page_indicator: ^1.1.0
   flutter_svg: ^2.0.7
+  pinput: ^3.0.0
+  flutter_native_splash: ^2.3.2
+  equatable: ^2.0.5
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  lints: ^2.1.1
 
 flutter:
   uses-material-design: true
@@ -28,3 +33,11 @@ flutter:
     - .env
     - assets/img/
     - assets/svg/
+    - assets/json/
+
+flutter_native_splash:
+  color: "#ffffff"
+  background_image: assets/img/stocks.jpg
+  #image: assets/img/logo_depense.png
+  android: true
+  ios: true
