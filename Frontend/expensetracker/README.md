@@ -1,16 +1,38 @@
-# expensetracker
+# Expense Tracker
 
-A new Flutter project.
+## Description
 
-## Getting Started
+Expense tracker is for now a simple open source and free mobile app designed to follow your expenses and incomes for your personnal comfort and information. 
 
-This project is a starting point for a Flutter application.
+The frontend part is built in dart/Flutter then converted to natives langages like Swift, Kotlin, Javascript, etc.
 
-A few resources to get you started if this is your first Flutter project:
+The backend part is built in PostgreSQL for the database and Python for the API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] Create an account 
+- [x] Log in
+- [x] Stay logged in
+- [x] Add expenses
+- [ ] Add incomes
+- [ ] See items
+
+
+### Support
+
+- [x] Android
+- [x] iOS
+- [ ] web
+- [ ] Windows
+- [ ] Linux
+- [ ] MacOS
+
+### i18n 
+
+- [x] English
+- [x] French
+- [ ] Others
+
+## Installation
+
+No content for the installation yet.
