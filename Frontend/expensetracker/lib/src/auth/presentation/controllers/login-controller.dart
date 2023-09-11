@@ -82,7 +82,7 @@ class LoginController extends GetxController with CacheManager {
         saveToken(responseModel.message);
         _authController.toggleObscureScreen();
         dispose();
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/nav');
       });
     }
   }

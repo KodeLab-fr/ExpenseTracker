@@ -7,6 +7,7 @@ abstract class Routes {
   static const INTRO = _Paths.INTRO;
   static const AUTH = _Paths.AUTH;
   static const OTP = _Paths.OTP;
+  static const NAV = _Paths.NAV;
   static const FORM = _Paths.FORM;
   static const NOTFOUND = _Paths.NOTFOUND;
   static const NOCONNEXION = _Paths.NOCONNEXION;
@@ -20,6 +21,7 @@ abstract class _Paths {
   static const INTRO = '/intro';
   static const AUTH = '/auth';
   static const OTP = '/otp';
+  static const NAV = '/nav';
   static const FORM = '/form';
   static const NOTFOUND = '/notfound';
   static const NOCONNEXION = '/noconnexion';

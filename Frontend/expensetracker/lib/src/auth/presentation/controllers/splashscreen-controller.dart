@@ -33,7 +33,7 @@ class SplashController extends GetxController with CacheManager {
           Get.offAllNamed('/notfound');
         }
       }, (right) {
-        Get.offNamed('/home');
+        Get.offNamed('/nav');
       });
     } else {
       Get.offNamed('/intro');

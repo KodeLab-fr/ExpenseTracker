@@ -1,3 +1,5 @@
+import 'package:expensetracker/core/navigation/bindings/navigation-binding.dart';
+import 'package:expensetracker/core/navigation/view/navigation_view.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/authentication-binding.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/otp-binding.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/intro-binding.dart';
@@ -63,6 +65,13 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
+    ),
+    GetPage(
+      name: _Paths.NAV,
+      page: () => const NavigationView(),
+      binding: NavigationBindings(),
       transition: Transition.cupertino,
       curve: Curves.ease,
     ),

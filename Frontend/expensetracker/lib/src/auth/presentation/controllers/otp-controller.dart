@@ -73,7 +73,7 @@ class OtpController extends GetxController {
           snackPosition: SnackPosition.TOP,
           duration: const Duration(seconds: 3),
         );
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/nav');
       }
     });
   }

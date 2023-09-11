@@ -1,8 +1,8 @@
-import 'package:expensetracker/src/home/presentation/controllers/home-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:expensetracker/core/navigation/controllers/side_drawer-controller.dart';
 
-class SideDrawer extends GetView<HomeController> {
+class SideDrawer extends GetView<SideDrawerController> {
   const SideDrawer({super.key});
 
   @override
