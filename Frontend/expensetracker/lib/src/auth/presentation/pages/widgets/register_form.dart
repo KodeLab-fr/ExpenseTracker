@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 
-import 'package:expensetracker/src/auth/presentation/controllers/register.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/register-controller.dart';
 
 class RegisterForm extends GetView<RegisterController> {
   final VoidCallback toggleForm;

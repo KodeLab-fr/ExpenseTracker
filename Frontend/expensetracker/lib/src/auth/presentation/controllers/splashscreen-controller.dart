@@ -1,6 +1,6 @@
 import 'package:expensetracker/core/cache/storage.dart';
-import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
+import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController with CacheManager {

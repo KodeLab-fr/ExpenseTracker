@@ -1,5 +1,5 @@
 import 'package:expensetracker/core/errors/failures.dart';
-import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
+import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:get/get.dart';
 
 class ServerDownController extends GetxController {

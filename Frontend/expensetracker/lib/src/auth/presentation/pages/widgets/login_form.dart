@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
 
-import 'package:expensetracker/src/auth/presentation/controllers/login.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/login-controller.dart';
 
 ///All visual elements of the sign in form
 class LoginForm extends GetView<LoginController> {

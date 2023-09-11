@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:expensetracker/core/cache/storage.dart';
-import 'package:expensetracker/src/auth/domain/models/login.dart';
-import 'package:expensetracker/src/auth/domain/models/register.dart';
-import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
+import 'package:expensetracker/src/auth/domain/models/login-model.dart';
+import 'package:expensetracker/src/auth/domain/models/register-model.dart';
+import 'package:expensetracker/src/auth/domain/repositories/log-repo.dart';
 import 'package:expensetracker/core/errors/failures.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/core/config.dart';
 

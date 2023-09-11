@@ -1,11 +1,11 @@
 import 'package:expensetracker/core/config.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/splash.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/splashscreen-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class SplashView extends GetView<SplashController> {
-  const SplashView({super.key});
+class SplashScreenView extends GetView<SplashController> {
+  const SplashScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,11 @@ class SplashView extends GetView<SplashController> {
       child: Scaffold(
         body: SizedBox(
           width: Get.width,
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SvgPicture.asset('assets/svg/default.svg')
-          ]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [SvgPicture.asset('assets/svg/default.svg')]),
         ),
       ),
     );
-  
   }
 }

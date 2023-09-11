@@ -1,12 +1,12 @@
 import 'package:expensetracker/core/config.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/auth.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/authentication-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/login_form.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/register_form.dart';
 
-class AuthView extends GetView<AuthController> {
-  const AuthView({super.key});
+class AuthenticationView extends GetView<AuthController> {
+  const AuthenticationView({super.key});
 
   @override
   Widget build(BuildContext context) {

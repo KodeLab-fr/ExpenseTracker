@@ -1,5 +1,5 @@
 import 'package:expensetracker/shared/components/custom_button.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';

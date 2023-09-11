@@ -1,35 +1,32 @@
-import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
-import 'package:expensetracker/shared/models/server_response.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/auth.dart';
+import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
+import 'package:expensetracker/shared/models/server_response_model.dart';
+import 'package:expensetracker/src/auth/domain/models/login-model.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/authentication-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/core/cache/storage.dart';
 
-import 'package:expensetracker/src/auth/domain/models/register.dart';
-
-class RegisterController extends GetxController with CacheManager {
+class LoginController extends GetxController with CacheManager {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   final AuthController _authController = Get.find();
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
   final _obscureText = true.obs;
 
   bool get obscureText => _obscureText.value;
 
+  ///Switches the visibility of the password in the field
   void toggle() {
     _obscureText.value = !obscureText;
     update();
   }
 
-  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
-
   ///Resets the form to its initial state
   void reset() {
     globalFormKey.currentState!.reset();
-    clear();
   }
 
   ///Measures if the form is valid and saves it
@@ -51,26 +48,25 @@ class RegisterController extends GetxController with CacheManager {
   /// Clear all the text fields
   void clear() {
     nameController.clear();
-    emailController.clear();
     passwordController.clear();
   }
 
-  /// Sign up the user with the informations given in the text fields
-  Future<void> register() async {
+  /// Sign in the user with the informations given in the text fields
+  Future<void> login() async {
     _authController.toggleObscureScreen();
     if (validateAndSave()) {
-      RegisterInfo requestModel = RegisterInfo(
-        username: nameController.text,
-        email: emailController.text,
+      LoginInfo requestModel = LoginInfo(
+        name: nameController.text,
         password: passwordController.text,
       );
-      final response = await _logRepoImplementation.register(requestModel);
+
+      final response = await _logRepoImplementation.login(requestModel);
       response.fold((left) {
         _authController.toggleObscureScreen();
-        if (left.code == 409) {
+        if (left.code == 401) {
           Get.snackbar(
-            'register-error_title'.tr,
-            'register-error_content'.tr,
+            'login-error_title'.tr,
+            'login-error'.tr,
             backgroundColor: const Color(0xFFE57373),
           );
         } else if (left.code == 502) {
@@ -79,15 +75,14 @@ class RegisterController extends GetxController with CacheManager {
           Get.offAllNamed('/noconnexion');
         } else {
           Get.offAllNamed('/notfound');
-        } 
+        }
       }, (right) {
         reset();
-        final responseModel = ResponseModel.fromJson(right.body);
-        if (responseModel.code == 0) {
-          saveToken(responseModel.message);
-          _authController.toggleObscureScreen();
-          Get.toNamed('/otp');
-        }
+        final responseModel = ServerResponseModel.fromJson(right.body);
+        saveToken(responseModel.message);
+        _authController.toggleObscureScreen();
+        dispose();
+        Get.offAllNamed('/home');
       });
     }
   }

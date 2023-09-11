@@ -2,10 +2,10 @@ import 'package:expensetracker/core/errors/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:expensetracker/shared/models/server_response.dart';
-import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
+import 'package:expensetracker/shared/models/server_response_model.dart';
+import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 
-class CodeController extends GetxController {
+class OtpController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   TextEditingController code = TextEditingController();
 
@@ -30,7 +30,7 @@ class CodeController extends GetxController {
         Get.offAllNamed('/notfound');
       }
     }, (right) {
-      final responseModel = ResponseModel.fromJson(right.body);
+      final responseModel = ServerResponseModel.fromJson(right.body);
       if (responseModel.code == 0) {
         Get.snackbar(
           'send_code-title'.tr,
@@ -63,7 +63,7 @@ class CodeController extends GetxController {
       }
     }, (right) {
       reset();
-      final responseModel = ResponseModel.fromJson(right.body);
+      final responseModel = ServerResponseModel.fromJson(right.body);
       if (responseModel.code == 0) {
         Get.snackbar(
           'create_account-title'.tr,

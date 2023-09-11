@@ -1,12 +1,12 @@
 import 'package:expensetracker/shared/components/custom_button.dart';
 import 'package:expensetracker/core/config.dart';
-import 'package:expensetracker/src/auth/presentation/controllers/code.dart';
+import 'package:expensetracker/src/auth/presentation/controllers/otp-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-class OtpView extends GetView<CodeController> {
+class OtpView extends GetView<OtpController> {
   const OtpView({super.key});
 
   @override

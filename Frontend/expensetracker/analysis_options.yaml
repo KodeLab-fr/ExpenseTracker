@@ -12,6 +12,7 @@ analyzer:
     lines_longer_than_80_chars: warning
     avoid_empty_else: warning
     empty_catches: warning
+    file_names: ignore
 
 linter:
   rules:
@@ -23,3 +24,4 @@ linter:
     lines_longer_than_80_chars: true
     avoid_empty_else: true
     empty_catches: true
+    file_names: false 

@@ -1,4 +1,4 @@
-import 'package:expensetracker/src/home/data/home_repo.impl.dart';
+import 'package:expensetracker/src/home/data/home_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

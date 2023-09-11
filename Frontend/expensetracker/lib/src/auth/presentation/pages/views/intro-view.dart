@@ -1,5 +1,5 @@
 import 'package:expensetracker/core/config.dart';
-import 'package:expensetracker/src/auth/presentation/pages/widgets/introscreen.dart';
+import 'package:expensetracker/src/auth/presentation/pages/widgets/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

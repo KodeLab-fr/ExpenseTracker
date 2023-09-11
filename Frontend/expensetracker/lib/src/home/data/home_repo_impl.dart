@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:expensetracker/core/cache/storage.dart';
 import 'package:expensetracker/core/errors/failures.dart';
-import 'package:expensetracker/src/home/domain/repositories/home_repo.dart';
+import 'package:expensetracker/src/home/domain/repositories/home-repo.dart';
 
 class HomeRepoImpl with CacheManager implements HomeRepository {
   @override

@@ -1,4 +1,4 @@
-import 'package:expensetracker/src/home/presentation/controllers/home.dart';
+import 'package:expensetracker/src/home/presentation/controllers/home-controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding extends Bindings {
