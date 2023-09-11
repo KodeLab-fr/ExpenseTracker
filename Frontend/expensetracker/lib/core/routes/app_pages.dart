@@ -14,6 +14,7 @@ import 'package:expensetracker/src/auth/presentation/pages/views/unknown.dart';
 import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
 import 'package:expensetracker/src/home/presentation/bindings/home.dart';
 import 'package:expensetracker/src/home/presentation/pages/views/home.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 part 'app_routes.dart';
@@ -26,51 +27,70 @@ class AppPages {
   static final NOTFOUND = GetPage(
     name: _Paths.NOTFOUND,
     page: () => const UnknownView(),
+    transition: Transition.cupertino,
+    curve: Curves.ease,
   );
 
   static final routes = [
     GetPage(
-        name: _Paths.ROOT,
-        page: () => const SplashView(),
-        binding: SplashBinding()),
+      name: _Paths.ROOT,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+      transition: Transition.fade,
+    ),
     GetPage(
       name: _Paths.INTRO,
       page: () => const IntroView(),
-      transition: Transition.fadeIn,
       binding: IntroControllerBinding(),
+      transition: Transition.fadeIn,
+      //curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.AUTH,
       page: () => const AuthView(),
       binding: AuthControllersBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: CodeControllerBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.FORM,
       page: () => const FormPage(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.NOTFOUND,
       page: () => const UnknownView(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.NOCONNEXION,
       page: () => const NetworkView(),
       binding: NetworkControllerBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.DOWN,
       page: () => const ServerDownView(),
       binding: ServerDownBinding(),
+      transition: Transition.cupertino,
+      curve: Curves.ease,
     ),
   ];
 }

@@ -1,4 +1,4 @@
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 import 'package:expensetracker/src/auth/data/log_repo_impl.dart';
 import 'package:get/get.dart';
 

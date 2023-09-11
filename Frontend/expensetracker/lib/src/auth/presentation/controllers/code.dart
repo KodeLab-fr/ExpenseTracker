@@ -1,4 +1,4 @@
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-import 'package:expensetracker/shared/config.dart';
+import 'package:expensetracker/core/config.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/introscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

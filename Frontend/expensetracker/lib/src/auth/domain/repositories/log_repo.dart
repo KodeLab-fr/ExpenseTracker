@@ -1,5 +1,5 @@
 import 'package:expensetracker/src/auth/domain/models/login.dart';
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 import 'package:get/get.dart';
 import 'package:dartz/dartz.dart';
 

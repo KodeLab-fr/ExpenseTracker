@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:expensetracker/shared/cache/storage.dart';
+import 'package:expensetracker/core/cache/storage.dart';
 import 'package:expensetracker/src/auth/domain/models/login.dart';
 import 'package:expensetracker/src/auth/domain/models/register.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log_repo.dart';
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/network.dart';
 import 'package:get/get.dart';
-import 'package:expensetracker/shared/config.dart';
+import 'package:expensetracker/core/config.dart';
 
 /// This class is used to implement the log repository by defining the content
 class LogRepoImplementation with CacheManager implements LogRepo {

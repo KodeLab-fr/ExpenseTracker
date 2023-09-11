@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 import 'package:get/get.dart';
 
 class NetworkController extends GetxController {

@@ -1,6 +1,7 @@
-import 'package:expensetracker/shared/config.dart';
+import 'package:expensetracker/core/config.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class SplashView extends GetView<SplashController> {
@@ -8,6 +9,7 @@ class SplashView extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SplashController());
     return FutureBuilder(
         future: controller.initRoutes(),
         builder: (context, snapshot) {
@@ -20,39 +22,16 @@ class SplashView extends GetView<SplashController> {
   }
 
   EnvironmentsBadge waitingView() {
-    final height = Get.height;
     return EnvironmentsBadge(
       child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 54, 63, 147),
-                Color.fromARGB(255, 189, 101, 220),
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
-          ),
+        body: SizedBox(
+          width: Get.width,
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(
-              Icons.monetization_on,
-              color: Colors.white,
-              size: height * 0.15,
-            ),
-            SizedBox(height: height * 0.03),
-            Text(
-              'splash-title'.tr,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 32,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
+            SvgPicture.asset('assets/svg/default.svg')
           ]),
         ),
       ),
     );
+  
   }
 }

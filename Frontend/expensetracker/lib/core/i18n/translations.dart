@@ -153,6 +153,6 @@ class ExpenseTrackerTranslations extends Translations {
           'failure-send_code_402': 'Code expiré, veuillez réessayer.',
           'failure-send_code_404': 'Utilisateur introuvable,'
               ' veuillez vous inscrire à nouveau.',
-        }
+        },
       };
 }

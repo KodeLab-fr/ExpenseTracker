@@ -1,4 +1,4 @@
-import 'package:expensetracker/src/home/presentation/pages/widgets/drawer.dart';
+import 'package:expensetracker/core/navigation/view/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

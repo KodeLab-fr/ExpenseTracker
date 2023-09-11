@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:expensetracker/shared/errors/failures.dart';
+import 'package:expensetracker/core/errors/failures.dart';
 
 abstract class HomeRepository {
 
