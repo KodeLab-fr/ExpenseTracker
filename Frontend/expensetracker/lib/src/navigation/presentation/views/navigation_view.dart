@@ -1,5 +1,8 @@
+import 'package:expensetracker/src/calendar/presentation/pages/views/calendar-view.dart';
+import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
 import 'package:expensetracker/src/navigation/presentation/controllers/navbar_controller.dart';
 import 'package:expensetracker/src/navigation/presentation/views/widgets/drawer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,12 +34,8 @@ class NavigationView extends GetView<NavbarController> {
                 Center(
                   child: Text('Home'),
                 ),
-                Center(
-                  child: Text('About'),
-                ),
-                Center(
-                  child: Text('Contact'),
-                ),
+                CalendarView(),
+                FormPage(),
                 Center(
                   child: Text('Settings'),
                 ),
@@ -51,13 +50,13 @@ class NavigationView extends GetView<NavbarController> {
                 onTap: controller.changeTabIndex,
                 items: [
                   _bottomNavigationBarItem(
-                      icon: Icons.home_outlined, label: 'Home'),
+                      icon: CupertinoIcons.home, label: 'Home'),
                   _bottomNavigationBarItem(
-                      icon: Icons.info_outline, label: 'About'),
+                      icon: CupertinoIcons.calendar, label: 'Calendar'),
                   _bottomNavigationBarItem(
-                      icon: Icons.contact_page_outlined, label: 'Contact'),
+                      icon: CupertinoIcons.rectangle_paperclip, label: 'Forms'),
                   _bottomNavigationBarItem(
-                      icon: Icons.settings_outlined, label: 'Settings'),
+                      icon: CupertinoIcons.settings, label: 'Settings'),
                 ]);
           }),
         );

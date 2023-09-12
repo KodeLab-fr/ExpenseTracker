@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -40,7 +41,7 @@ class RegisterForm extends GetView<RegisterController> {
             controller: controller.nameController,
             autocorrect: false,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.person),
+              prefixIcon: const Icon(CupertinoIcons.person),
               labelText: 'register-name'.tr,
             ),
             validator: (value) {
@@ -56,7 +57,7 @@ class RegisterForm extends GetView<RegisterController> {
             controller: controller.emailController,
             autocorrect: false,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.email),
+              prefixIcon: const Icon(CupertinoIcons.mail),
               labelText: 'register-email'.tr,
             ),
             validator: (value) {
@@ -72,15 +73,15 @@ class RegisterForm extends GetView<RegisterController> {
                 controller: controller.passwordController,
                 autocorrect: false,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock),
+                  prefixIcon: const Icon(CupertinoIcons.lock),
                   labelText: 'register-password'.tr,
                   suffixIcon: IconButton(
                     onPressed: () {
                       controller.toggle();
                     },
                     icon: controller.obscureText
-                        ? const Icon(Icons.visibility)
-                        : const Icon(Icons.visibility_off),
+                        ? const Icon(CupertinoIcons.eye)
+                        : const Icon(CupertinoIcons.eye_slash),
                   ),
                 ),
                 validator: (value) {

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -41,7 +42,7 @@ class LoginForm extends GetView<LoginController> {
             controller: controller.nameController,
             autocorrect: false,
             decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.person),
+              prefixIcon: const Icon(CupertinoIcons.person),
               labelText: 'login-id'.tr,
             ),
             validator: (value) {
@@ -57,15 +58,15 @@ class LoginForm extends GetView<LoginController> {
                 controller: controller.passwordController,
                 autocorrect: false,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.lock),
+                  prefixIcon: const Icon(CupertinoIcons.lock),
                   labelText: 'login-password'.tr,
                   suffixIcon: IconButton(
                     onPressed: () {
                       controller.toggle();
                     },
                     icon: controller.obscureText
-                        ? const Icon(Icons.visibility)
-                        : const Icon(Icons.visibility_off),
+                        ? const Icon(CupertinoIcons.eye)
+                        : const Icon(CupertinoIcons.eye_slash),
                   ),
                 ),
                 validator: (value) {

@@ -60,7 +60,7 @@ class ExpenseTrackerTranslations extends Translations {
           'drawer-logout': 'Log out',
           'login-error_title': 'Login failed',
           'login-error_content': 'Invalid credentials, please try again.',
-          'home-title': 'Home',
+          'home-title': 'Expense Tracker',
           'drawer-lang': 'Language',
           'register-error_title': 'Registration failed',
           'register-error_content': 'Name or email already used, please try '
@@ -135,7 +135,7 @@ class ExpenseTrackerTranslations extends Translations {
           'drawer-logout': 'Déconnexion',
           'login-error_title': 'Échec de la connexion',
           'login-error_content': 'Identifiants invalides, veuillez réessayer.',
-          'home-title': 'Accueil',
+          'home-title': 'Expense Tracker',
           'drawer-lang': 'Langue',
           'register-error_title': 'Échec de l\'inscription',
           'register-error_content': 'Nom ou adresse mail déjà utilisés,'

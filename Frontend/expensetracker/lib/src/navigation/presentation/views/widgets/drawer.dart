@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:expensetracker/src/navigation/presentation/controllers/side_drawer-controller.dart';
@@ -13,8 +14,10 @@ class SideDrawer extends GetView<SideDrawerController> {
         children: [
           const UserAccountsDrawerHeader(
             //TODO : change with the actual info
+            // !
             accountName: Text('Roman Shauwn'),
             accountEmail: Text('adresse@gmail.com'),
+            // !
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image(
@@ -33,35 +36,35 @@ class SideDrawer extends GetView<SideDrawerController> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.home),
+            leading: const Icon(CupertinoIcons.home),
             title: Text('drawer-home'.tr),
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.info),
+            leading: const Icon(CupertinoIcons.info),
             title: Text('drawer-about'.tr),
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.contact_mail),
+            leading: const Icon(CupertinoIcons.mail),
             title: Text('drawer-contact'.tr),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.language),
+            leading: const Icon(CupertinoIcons.globe),
             title: Text('drawer-lang'.tr),
             onTap: () {
               controller.changeLangage();
             },
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
+            leading: const Icon(CupertinoIcons.settings),
             title: Text('drawer-settings'.tr),
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.logout),
+            leading: const Icon(CupertinoIcons.square_arrow_right),
             title: Text('drawer-logout'.tr),
             onTap: () => controller.logout(),
           ),
