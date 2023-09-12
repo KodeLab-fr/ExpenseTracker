@@ -1,5 +1,5 @@
-import 'package:expensetracker/core/navigation/bindings/navigation-binding.dart';
-import 'package:expensetracker/core/navigation/view/navigation_view.dart';
+import 'package:expensetracker/src/navigation/presentation/bindings/navigation-binding.dart';
+import 'package:expensetracker/src/navigation/presentation/views/navigation_view.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/authentication-binding.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/otp-binding.dart';
 import 'package:expensetracker/src/auth/presentation/bindings/intro-binding.dart';

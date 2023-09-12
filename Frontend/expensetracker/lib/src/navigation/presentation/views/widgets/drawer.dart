@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:expensetracker/core/navigation/controllers/side_drawer-controller.dart';
+import 'package:expensetracker/src/navigation/presentation/controllers/side_drawer-controller.dart';
 
 class SideDrawer extends GetView<SideDrawerController> {
   const SideDrawer({super.key});

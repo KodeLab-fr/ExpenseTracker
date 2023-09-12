@@ -1,5 +1,5 @@
-import 'package:expensetracker/core/navigation/controllers/navbar_controller.dart';
-import 'package:expensetracker/core/navigation/view/widgets/drawer.dart';
+import 'package:expensetracker/src/navigation/presentation/controllers/navbar_controller.dart';
+import 'package:expensetracker/src/navigation/presentation/views/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
