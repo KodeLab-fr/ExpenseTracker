@@ -5,19 +5,19 @@ import 'package:get/get.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/login_form.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/register_form.dart';
 
+///The main view of the authentication module, host the login and register forms
 class AuthenticationView extends GetView<AuthController> {
   const AuthenticationView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final width = Get.width;
     return EnvironmentsBadge(
       child: Scaffold(
         body: Stack(
           children: [
             Obx(() {
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                padding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
                 child: controller.isRegisterFormVisible
                     ? RegisterForm(toggleForm: controller.toggleForm)
                     : LoginForm(toggleForm: controller.toggleForm),

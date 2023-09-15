@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class ExpenseTrackerTranslations extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
-        'en_US': {
+        'en': {
           'error-title': 'Error occurred',
           'ok': 'OK',
           'send_code-title': 'Code sent!',
@@ -52,7 +52,7 @@ class ExpenseTrackerTranslations extends Translations {
           'splash-title': 'Expense Tracker',
           'unknown-title': 'Address not found',
           'unknown-text': 'The page you are looking for does not exist',
-          'unknown-button': 'Back to home',
+          'unknown-button': 'Go back',
           'drawer-home': 'Home',
           'drawer-about': 'About',
           'drawer-contact': 'Contact',
@@ -76,8 +76,12 @@ class ExpenseTrackerTranslations extends Translations {
           'failure-send_code_401': 'Invalid code, please try again.',
           'failure-send_code_402': 'Code expired, please try again.',
           'failure-send_code_404': 'User not found, please register again.',
+          'navbar-home': 'Home',
+          'navbar-calendar': 'Calendar',
+          'navbar-forms': 'Forms',
+          'navbar-settings': 'Settings',
         },
-        'fr_FR': {
+        'fr': {
           'error-title': 'Erreur survenue',
           'ok': 'OK',
           'send_code-title': 'Code envoyé !',
@@ -127,7 +131,7 @@ class ExpenseTrackerTranslations extends Translations {
           'splash-title': 'Expense Tracker',
           'unknown-title': 'Adresse introuvable',
           'unknown-text': 'La page que vous recherchez n\'existe pas',
-          'unknown-button': 'Revenir à l\'accueil',
+          'unknown-button': 'Revenir à la page précédente',
           'drawer-home': 'Accueil',
           'drawer-about': 'À propos',
           'drawer-contact': 'Contact',
@@ -153,6 +157,10 @@ class ExpenseTrackerTranslations extends Translations {
           'failure-send_code_402': 'Code expiré, veuillez réessayer.',
           'failure-send_code_404': 'Utilisateur introuvable,'
               ' veuillez vous inscrire à nouveau.',
+          'navbar-home': 'Accueil',
+          'navbar-calendar': 'Calendrier',
+          'navbar-forms': 'Formulaires',
+          'navbar-settings': 'Paramètres',
         },
       };
 }

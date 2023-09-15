@@ -1,4 +1,5 @@
 import 'package:expensetracker/shared/components/custom_button.dart';
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/server_down-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,35 +16,31 @@ class ServerDownView extends GetView<ServerDownController> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
             child: Center(
-              child: Column(children: [
-                SizedBox(height: Get.height * 0.2),
-                SizedBox(
-                  height: Get.height * 0.3,
-                  child: SvgPicture.asset('assets/svg/no_response.svg'),
-                ),
-                SizedBox(height: Get.height * 0.09),
-                Text(
-                  'server_down-title'.tr,
-                  style: const TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF363f93),
+              child: Column(
+                children: [
+                  const HeightSpacer(heigth: 0.2),
+                  SizedBox(
+                    height: Get.height * 0.3,
+                    child: SvgPicture.asset('assets/svg/no_response.svg'),
                   ),
-                ),
-                SizedBox(height: Get.height * 0.03),
-                Text('server_down-text'.tr,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.black38,
-                    ),
-                    textAlign: TextAlign.center),
-                SizedBox(height: Get.height * 0.04),
-                CustomButton(
+                  const HeightSpacer(heigth: 0.09),
+                  Text(
+                    'server_down-title'.tr,
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  const HeightSpacer(heigth: 0.03),
+                  Text(
+                    'server_down-text'.tr,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    textAlign: TextAlign.center,
+                  ),
+                  const HeightSpacer(heigth: 0.04),
+                  CustomButton(
                     text: 'server_down-button'.tr,
-                    onPressed: () {
-                      controller.loading();
-                    }),
-              ]),
+                    onPressed: controller.loading,
+                  ),
+                ],
+              ),
             ),
           ),
           Obx(() {

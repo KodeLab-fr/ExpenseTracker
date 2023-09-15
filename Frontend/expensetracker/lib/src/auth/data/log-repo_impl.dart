@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:expensetracker/core/cache/storage.dart';
+import 'package:expensetracker/core/services/cache-service.dart';
 import 'package:expensetracker/src/auth/domain/models/login-model.dart';
 import 'package:expensetracker/src/auth/domain/models/register-model.dart';
 import 'package:expensetracker/src/auth/domain/repositories/log-repo.dart';
@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:expensetracker/core/config.dart';
 
 /// This class is used to implement the log repository by defining the content
-class LogRepoImplementation with CacheManager implements LogRepo {
+class LogRepoImplementation implements LogRepo {
   final _networkController = NetworkController();
 
   ///Makes a call to the API to sign in the user
@@ -91,7 +91,8 @@ class LogRepoImplementation with CacheManager implements LogRepo {
     try {
       final response = await GetConnect().get(
         '${ConfigEnvironments.getCurrentEnvironmentUrl()}/users/new_code',
-        query: Map<String, dynamic>.from({'token': getToken()}),
+        query: Map<String, dynamic>.from(
+            {'token': Get.find<CacheService>().getToken()}),
       );
       if (response.statusCode == 202) {
         return Right(response);
@@ -118,7 +119,7 @@ class LogRepoImplementation with CacheManager implements LogRepo {
         query: Map<String, dynamic>.from(
           {
             'number': code,
-            'token': getToken(),
+            'token': Get.find<CacheService>().getToken(),
           },
         ),
       );

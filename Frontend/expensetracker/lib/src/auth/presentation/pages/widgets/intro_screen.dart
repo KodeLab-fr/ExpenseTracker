@@ -1,11 +1,13 @@
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+///All visual elements of the intro screen
 class IntroScreen extends StatelessWidget {
   final String pathSvg;
   final double heightSvg;
-  final double heitghtText;
+  final double heigthText;
   final String title;
   final String text;
 
@@ -13,55 +15,40 @@ class IntroScreen extends StatelessWidget {
     super.key,
     required this.pathSvg,
     required this.heightSvg,
-    required this.heitghtText,
+    required this.heigthText,
     required this.title,
     required this.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: height * 0.03),
+          padding: EdgeInsets.symmetric(horizontal: Get.height * 0.03),
           child: Column(
             children: [
+              const HeightSpacer(heigth: 0.2),
               SizedBox(
-                height: height * 0.2,
-              ),
-              SizedBox(
-                height: height * heightSvg,
+                height: Get.height * heightSvg,
                 child: SvgPicture.asset(
                   pathSvg,
                   fit: BoxFit.contain,
                 ),
               ),
-              // SizedBox(height: height * 0.05),
-              SizedBox(
-                height: height * heitghtText,
-              ),
+              HeightSpacer(heigth: heigthText),
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 30,
-                  color: Color.fromARGB(255, 54, 63, 147),
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
+              const HeightSpacer(heigth: 0.05),
               SizedBox(
-                height: height * 0.05,
-              ),
-              SizedBox(
-                height: height * 0.1,
+                height: Get.height * 0.1,
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.black38,
-                    fontSize: 16,
-                  ),
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
             ],

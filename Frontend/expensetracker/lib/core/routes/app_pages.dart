@@ -39,13 +39,14 @@ class AppPages {
       page: () => const SplashScreenView(),
       binding: SplashBinding(),
       transition: Transition.fade,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.INTRO,
       page: () => const IntroView(),
       binding: IntroBinding(),
       transition: Transition.fadeIn,
-      //curve: Curves.ease,
+      curve: Curves.ease,
     ),
     GetPage(
       name: _Paths.AUTH,

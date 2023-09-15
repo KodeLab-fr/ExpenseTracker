@@ -1,12 +1,12 @@
+import 'package:expensetracker/core/services/cache-service.dart';
 import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response_model.dart';
 import 'package:expensetracker/src/auth/domain/models/login-model.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/authentication-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:expensetracker/core/cache/storage.dart';
 
-class LoginController extends GetxController with CacheManager {
+class LoginController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   final AuthController _authController = Get.find();
 
@@ -79,7 +79,7 @@ class LoginController extends GetxController with CacheManager {
       }, (right) {
         reset();
         final responseModel = ServerResponseModel.fromJson(right.body);
-        saveToken(responseModel.message);
+        Get.find<CacheService>().saveToken(responseModel.message);
         _authController.toggleObscureScreen();
         dispose();
         Get.offAllNamed('/nav');

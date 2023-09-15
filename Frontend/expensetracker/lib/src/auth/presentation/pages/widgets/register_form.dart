@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -7,119 +8,112 @@ import 'package:expensetracker/src/auth/presentation/controllers/register-contro
 
 class RegisterForm extends GetView<RegisterController> {
   final VoidCallback toggleForm;
-  const RegisterForm({super.key, required this.toggleForm});
+  const RegisterForm({
+    super.key,
+    required this.toggleForm,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
     return Form(
       key: controller.globalFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: height * 0.1),
+          const HeightSpacer(heigth: 0.1),
           SizedBox(
-            height: height * 0.08,
+            height: Get.height * 0.08,
             child: Text(
               'app-title'.tr,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: Platform.isMacOS ? 40 : 30,
-                color: const Color(0xFF363f93),
-              ),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
           ),
           Text(
             'register-title'.tr,
-            style: TextStyle(
-                fontSize: Platform.isMacOS ? 40 : 30,
-                color: const Color(0xFF363f93)),
+            style: Theme.of(context).textTheme.displayLarge,
           ),
-          SizedBox(height: height * 0.08),
+          const HeightSpacer(heigth: 0.08),
           TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.nameController,
-            autocorrect: false,
             decoration: InputDecoration(
               prefixIcon: const Icon(CupertinoIcons.person),
               labelText: 'register-name'.tr,
             ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            autocorrect: false,
             validator: (value) {
               if (value!.length < 3) {
                 return 'register-name_validator'.tr;
               }
               return null;
             },
-            maxLength: 25,
-          ),
-          TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
+          ),
+          const HeightSpacer(heigth: 0.02),
+          TextFormField(
             controller: controller.emailController,
-            autocorrect: false,
             decoration: InputDecoration(
               prefixIcon: const Icon(CupertinoIcons.mail),
               labelText: 'register-email'.tr,
             ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            autocorrect: false,
             validator: (value) {
               if (value!.length < 3) {
                 return 'register-email_validator'.tr;
               }
               return null;
             },
-            maxLength: 25,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
           ),
+          const HeightSpacer(heigth: 0.02),
           Obx(() => TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: controller.passwordController,
-                autocorrect: false,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(CupertinoIcons.lock),
                   labelText: 'register-password'.tr,
+                  prefixIcon: const Icon(CupertinoIcons.lock),
                   suffixIcon: IconButton(
-                    onPressed: () {
-                      controller.toggle();
-                    },
+                    onPressed: controller.toggle,
                     icon: controller.obscureText
                         ? const Icon(CupertinoIcons.eye)
                         : const Icon(CupertinoIcons.eye_slash),
                   ),
                 ),
+                style: Theme.of(context).textTheme.bodyMedium,
+                obscureText: controller.obscureText,
+                autocorrect: false,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'register-password_validator'.tr;
                   }
                   return null;
                 },
-                obscureText: controller.obscureText,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
               )),
-          SizedBox(height: height * 0.03),
+          const HeightSpacer(heigth: 0.03),
           Row(children: [
-            Text('register-already_account'.tr,
-                style: const TextStyle(color: Colors.black38)),
+            Text(
+              'register-already_account'.tr,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             GestureDetector(
-              onTap: () {
-                toggleForm();
-              },
+              onTap: toggleForm,
               child: Text(
                 'register-text'.tr,
-                style: const TextStyle(color: Color(0xFF363f93)),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ]),
-          SizedBox(height: height * 0.03),
+          const HeightSpacer(heigth: 0.03),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'register-button'.tr,
-                style: TextStyle(
-                    fontSize: Platform.isMacOS ? 35 : 28,
-                    color: const Color(0xFF363f93)),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               ElevatedButton(
-                onPressed: () {
-                  controller.register();
-                },
+                onPressed: controller.register,
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: EdgeInsets.all(Platform.isMacOS ? 20 : 15),
@@ -132,7 +126,7 @@ class RegisterForm extends GetView<RegisterController> {
                 ),
               )
             ],
-          )
+          ),
         ],
       ),
     );

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CalendarView extends GetView {
-  const CalendarView({super.key});
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+class ScheduleView extends GetView {
+  const ScheduleView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Calendar'),
+    return SfCalendar(
+      view: CalendarView.week,
     );
   }
 }

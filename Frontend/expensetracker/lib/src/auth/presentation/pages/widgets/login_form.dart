@@ -1,3 +1,4 @@
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -12,114 +13,101 @@ class LoginForm extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
     return Form(
       key: controller.globalFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: height * 0.1),
+          const HeightSpacer(heigth: 0.1),
           SizedBox(
-            height: height * 0.08,
+            height: Get.height * 0.08,
             child: Text(
               'app-title'.tr,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: Platform.isMacOS ? 40 : 30,
-                color: const Color(0xFF363f93),
-              ),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
           ),
           Text(
             'login-title'.tr,
-            style: TextStyle(
-                fontSize: Platform.isMacOS ? 40 : 30,
-                color: const Color(0xFF363f93)),
+            style: Theme.of(context).textTheme.displayLarge,
           ),
-          SizedBox(height: height * 0.08),
+          const HeightSpacer(heigth: 0.08),
           TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: controller.nameController,
-            autocorrect: false,
             decoration: InputDecoration(
               prefixIcon: const Icon(CupertinoIcons.person),
               labelText: 'login-id'.tr,
             ),
+            style: Theme.of(context).textTheme.bodyMedium,
+            autocorrect: false,
             validator: (value) {
               if (value!.length < 3) {
                 return 'login-id_validator'.tr;
               }
               return null;
             },
-            maxLength: 30,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
           ),
+          const HeightSpacer(heigth: 0.02),
           Obx(() => TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: controller.passwordController,
-                autocorrect: false,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(CupertinoIcons.lock),
                   labelText: 'login-password'.tr,
                   suffixIcon: IconButton(
-                    onPressed: () {
-                      controller.toggle();
-                    },
+                    onPressed: controller.toggle,
                     icon: controller.obscureText
                         ? const Icon(CupertinoIcons.eye)
                         : const Icon(CupertinoIcons.eye_slash),
                   ),
                 ),
+                style: Theme.of(context).textTheme.bodyMedium,
+                autocorrect: false,
+                obscureText: controller.obscureText,
                 validator: (value) {
                   if (value!.length < 8) {
                     return 'login-password_validator'.tr;
                   }
                   return null;
                 },
-                obscureText: controller.obscureText,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
               )),
-          SizedBox(height: height * 0.03),
+          const HeightSpacer(heigth: 0.03),
           Row(children: [
             Text(
               'login-no_account'.tr,
-              style: const TextStyle(color: Colors.black38),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             GestureDetector(
-              onTap: () {
-                toggleForm();
-              },
+              onTap: toggleForm,
               child: Text(
                 'login-text'.tr,
-                style: const TextStyle(color: Color(0xFF363f93)),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ]),
-          SizedBox(height: height * 0.04),
+          const HeightSpacer(heigth: 0.04),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'login-button'.tr,
-                style: TextStyle(
-                    fontSize: Platform.isMacOS ? 35 : 28,
-                    color: const Color(0xFF363f93)),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               ElevatedButton(
-                onPressed: () {
-                  controller.login();
-                },
+                onPressed: controller.login,
                 style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  padding: EdgeInsets.all(Platform.isMacOS ? 20 : 15),
                   backgroundColor: const Color(0xFF363f93),
+                  padding: EdgeInsets.all(Platform.isMacOS ? 20 : 15),
+                  shape: const CircleBorder(),
                 ),
                 child: Icon(
                   Icons.arrow_forward,
-                  color: Colors.white,
                   size: Platform.isMacOS ? 45 : 30,
+                  color: Colors.white,
                 ),
               )
             ],
-          )
+          ),
         ],
       ),
     );

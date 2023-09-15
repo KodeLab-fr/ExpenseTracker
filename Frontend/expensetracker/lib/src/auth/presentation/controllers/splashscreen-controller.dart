@@ -1,9 +1,9 @@
-import 'package:expensetracker/core/cache/storage.dart';
+import 'package:expensetracker/core/services/cache-service.dart';
 import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
 import 'package:get/get.dart';
 
-class SplashController extends GetxController with CacheManager {
+class SplashController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
 
   /// Initializes the navigation
@@ -17,13 +17,13 @@ class SplashController extends GetxController with CacheManager {
 
   /// Checks if the user is logged in or not before starting the navigation
   Future<void> checkLoginStatus() async {
-    final token = getToken();
+    final token = Get.find<CacheService>().getToken();
 
     if (token != null) {
       final response = await _logRepoImplementation.autoLogin(token);
       response.fold((left) {
         if (left.code == 401) {
-          removeToken();
+          Get.find<CacheService>().removeToken();
           Get.toNamed('/intro');
         } else if (left.code == 502) {
           Get.offAllNamed('/down');

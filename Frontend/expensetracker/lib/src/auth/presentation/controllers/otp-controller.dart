@@ -1,4 +1,5 @@
 import 'package:expensetracker/core/errors/failures.dart';
+import 'package:expensetracker/core/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,8 +36,8 @@ class OtpController extends GetxController {
         Get.snackbar(
           'send_code-title'.tr,
           'send_code-body'.tr,
-          backgroundColor: const Color(0xFF363f93),
-          colorText: Colors.white,
+          backgroundColor: Palette.PRIMARY,
+          colorText: Palette.WHITE,
           snackPosition: SnackPosition.TOP,
           duration: const Duration(seconds: 2),
         );
@@ -68,8 +69,8 @@ class OtpController extends GetxController {
         Get.snackbar(
           'create_account-title'.tr,
           'create_account-body'.tr,
-          backgroundColor: const Color.fromARGB(255, 54, 147, 90),
-          colorText: Colors.white,
+          backgroundColor: Palette.SUCCESS,
+          colorText: Palette.WHITE,
           snackPosition: SnackPosition.TOP,
           duration: const Duration(seconds: 3),
         );

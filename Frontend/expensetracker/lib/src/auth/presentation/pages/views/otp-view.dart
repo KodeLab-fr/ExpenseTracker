@@ -1,5 +1,7 @@
+import 'package:expensetracker/core/themes.dart';
 import 'package:expensetracker/shared/components/custom_button.dart';
 import 'package:expensetracker/core/config.dart';
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/otp-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,104 +13,84 @@ class OtpView extends GetView<OtpController> {
 
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
-    final width = Get.width;
     return EnvironmentsBadge(
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios,
-              color: Colors.black38,
+              color: Palette.DUST_LIGTH,
             ),
             onPressed: () {
               controller.reset();
               Get.back();
             },
           ),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Palette.TRANSPARENT,
           elevation: 0,
         ),
         body: Column(
           children: [
             SizedBox(
-              height: height * 0.3,
+              height: Get.height * 0.3,
               child: SvgPicture.asset('assets/svg/otp.svg'),
             ),
-            SizedBox(height: height * 0.05),
+            const HeightSpacer(heigth: 0.05),
             Text(
               'otp-title'.tr,
-              style: const TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF363f93),
-              ),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
-            SizedBox(height: height * 0.02),
+            const HeightSpacer(heigth: 0.02),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+              padding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
               child: Text(
                 'otp-text'.tr,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black38,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
-            SizedBox(height: height * 0.04),
+            const HeightSpacer(heigth: 0.04),
             Center(
               child: Pinput(
                 controller: controller.code,
                 length: 6,
                 showCursor: true,
                 defaultPinTheme: PinTheme(
-                  width: width * 0.11,
-                  height: height * 0.06,
+                  width: Get.width * 0.11,
+                  height: Get.height * 0.06,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Palette.WHITE,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: const Color(0xFF363f93),
+                      color: Palette.PRIMARY,
                       width: 1,
                     ),
                     boxShadow: const [
                       BoxShadow(
-                        color: Colors.black12,
+                        color: Palette.DUST_DARK,
                         blurRadius: 10,
                         offset: Offset(0, 2),
                       )
                     ],
                   ),
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF363f93),
-                  ),
+                  textStyle: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
             ),
-            SizedBox(height: height * 0.04),
+            const HeightSpacer(heigth: 0.04),
             SizedBox(
-              height: height * 0.06,
+              height: Get.height * 0.06,
               child: CustomButton(
                 text: 'otp-button'.tr,
-                onPressed: () {
-                  controller.verifyCode();
-                },
+                onPressed: controller.verifyCode,
               ),
             ),
-            SizedBox(height: height * 0.03),
+            const HeightSpacer(heigth: 0.03),
             GestureDetector(
-              onTap: () {
-                controller.resendCode();
-              },
+              onTap: controller.resendCode,
               child: Text(
                 'otp-resend'.tr,
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black38,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:expensetracker/shared/components/custom_button.dart';
+import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -8,40 +9,31 @@ class UnknownView extends GetView {
 
   @override
   Widget build(BuildContext context) {
-    final height = Get.height;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
         child: Center(
           child: Column(children: [
-            SizedBox(height: height * 0.2),
+            const HeightSpacer(heigth: 0.2),
             SizedBox(
-              height: height * 0.3,
+              height: Get.height * 0.3,
               child: SvgPicture.asset('assets/svg/404.svg'),
             ),
-            SizedBox(height: height * 0.09),
+            const HeightSpacer(heigth: 0.09),
             Text(
               'unknown-title'.tr,
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF363f93),
-              ),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
-            SizedBox(height: height * 0.03),
+            const HeightSpacer(heigth: 0.03),
             Text(
               'unknown-text'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black38,
-              ),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
-            SizedBox(height: height * 0.04),
+            const HeightSpacer(heigth: 0.04),
             CustomButton(
-                text: 'unknown-button'.tr,
-                onPressed: () {
-                  Get.back();
-                }),
+              text: 'unknown-button'.tr,
+              onPressed: Get.back,
+            ),
           ]),
         ),
       ),

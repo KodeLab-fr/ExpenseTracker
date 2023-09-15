@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +35,8 @@ class Failure {
     Get.snackbar(
       'error-title'.tr,
       error.toString().replaceAll('Exception: ', ''),
-      backgroundColor: const Color(0xFFE57373),
-      colorText: Colors.white,
+      backgroundColor: Palette.ERROR,
+      colorText: Palette.WHITE,
       snackPosition: SnackPosition.TOP,
       duration: const Duration(seconds: 3),
     );
