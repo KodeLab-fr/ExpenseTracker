@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,7 +38,7 @@ class SideDrawer extends GetView<SideDrawerController> {
           ListTile(
             leading: const Icon(CupertinoIcons.home),
             title: Text(
-              'drawer-home'.tr,
+              Adresses.DRAWER_VIEW_HOME.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             onTap: () {},
@@ -45,7 +46,7 @@ class SideDrawer extends GetView<SideDrawerController> {
           ListTile(
             leading: const Icon(CupertinoIcons.info),
             title: Text(
-              'drawer-about'.tr,
+              Adresses.DRAWER_VIEW_ABOUT.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             onTap: () {},
@@ -53,7 +54,7 @@ class SideDrawer extends GetView<SideDrawerController> {
           ListTile(
             leading: const Icon(CupertinoIcons.mail),
             title: Text(
-              'drawer-contact'.tr,
+              Adresses.DRAWER_VIEW_CONTACT.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             onTap: () {},
@@ -62,28 +63,26 @@ class SideDrawer extends GetView<SideDrawerController> {
           ListTile(
             leading: const Icon(CupertinoIcons.globe),
             title: Text(
-              'drawer-lang'.tr,
+              Adresses.DRAWER_VIEW_LANG.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            onTap: () {
-              controller.changeLangage();
-            },
+            onTap: controller.changeLangage,
           ),
           ListTile(
             leading: const Icon(CupertinoIcons.settings),
             title: Text(
-              'drawer-settings'.tr,
+              Adresses.DRAWER_VIEW_SETTINGS.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            onTap: () => controller.changeTheme(),
+            onTap: controller.changeTheme,
           ),
           ListTile(
             leading: const Icon(CupertinoIcons.square_arrow_right),
             title: Text(
-              'drawer-logout'.tr,
+              Adresses.DRAWER_VIEW_LOGOUT.tr,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            onTap: () => controller.logout(),
+            onTap: controller.logout,
           ),
         ],
       ),

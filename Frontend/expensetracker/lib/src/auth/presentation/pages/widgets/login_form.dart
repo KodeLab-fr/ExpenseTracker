@@ -1,3 +1,5 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
+import 'package:expensetracker/core/themes.dart';
 import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +24,12 @@ class LoginForm extends GetView<LoginController> {
           SizedBox(
             height: Get.height * 0.08,
             child: Text(
-              'app-title'.tr,
+              Adresses.APP_NAME_WITH_APP.tr,
               style: Theme.of(context).textTheme.displayLarge,
             ),
           ),
           Text(
-            'login-title'.tr,
+            Adresses.LOGIN_FORM_VIEW_TITLE.tr,
             style: Theme.of(context).textTheme.displayLarge,
           ),
           const HeightSpacer(heigth: 0.08),
@@ -35,13 +37,13 @@ class LoginForm extends GetView<LoginController> {
             controller: controller.nameController,
             decoration: InputDecoration(
               prefixIcon: const Icon(CupertinoIcons.person),
-              labelText: 'login-id'.tr,
+              labelText: Adresses.LOGIN_FORM_VIEW_ID.tr,
             ),
             style: Theme.of(context).textTheme.bodyMedium,
             autocorrect: false,
             validator: (value) {
               if (value!.length < 3) {
-                return 'login-id_validator'.tr;
+                return Adresses.LOGIN_FORM_VIEW_ID_VALIDATOR.tr;
               }
               return null;
             },
@@ -52,7 +54,7 @@ class LoginForm extends GetView<LoginController> {
                 controller: controller.passwordController,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(CupertinoIcons.lock),
-                  labelText: 'login-password'.tr,
+                  labelText: Adresses.LOGIN_FORM_VIEW_PASSWORD.tr,
                   suffixIcon: IconButton(
                     onPressed: controller.toggle,
                     icon: controller.obscureText
@@ -65,7 +67,7 @@ class LoginForm extends GetView<LoginController> {
                 obscureText: controller.obscureText,
                 validator: (value) {
                   if (value!.length < 8) {
-                    return 'login-password_validator'.tr;
+                    return Adresses.LOGIN_FORM_VIEW_PASSWORD_VALIDATOR.tr;
                   }
                   return null;
                 },
@@ -74,13 +76,13 @@ class LoginForm extends GetView<LoginController> {
           const HeightSpacer(heigth: 0.03),
           Row(children: [
             Text(
-              'login-no_account'.tr,
+              Adresses.LOGIN_FORM_VIEW_NO_ACCOUNT.tr,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             GestureDetector(
               onTap: toggleForm,
               child: Text(
-                'login-text'.tr,
+                Adresses.LOGIN_FORM_VIEW_SWITCH.tr,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
@@ -90,20 +92,20 @@ class LoginForm extends GetView<LoginController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'login-button'.tr,
+                Adresses.LOGIN_FORM_VIEW_BUTTON.tr,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               ElevatedButton(
                 onPressed: controller.login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF363f93),
+                  backgroundColor: Palette.PRIMARY,
                   padding: EdgeInsets.all(Platform.isMacOS ? 20 : 15),
                   shape: const CircleBorder(),
                 ),
                 child: Icon(
                   Icons.arrow_forward,
                   size: Platform.isMacOS ? 45 : 30,
-                  color: Colors.white,
+                  color: Palette.WHITE,
                 ),
               )
             ],

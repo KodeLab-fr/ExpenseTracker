@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:expensetracker/core/themes.dart';
+
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -14,8 +16,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: const ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(Colors.white),
-          backgroundColor: MaterialStatePropertyAll(Color(0xFF363f93)),
+          foregroundColor: MaterialStatePropertyAll(Palette.WHITE),
+          backgroundColor: MaterialStatePropertyAll(Palette.PRIMARY),
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(25)))),
         ),

@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/shared/components/custom_button.dart';
 import 'package:expensetracker/shared/components/custom_spacer.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
@@ -22,18 +23,18 @@ class NetworkView extends GetView<NetworkController> {
               ),
               const HeightSpacer(heigth: 0.09),
               Text(
-                'network-title'.tr,
+                Adresses.NETWORK_VIEW_TITLE.tr,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               const HeightSpacer(heigth: 0.03),
               Text(
-                'network-text'.tr,
+                Adresses.NETWORK_VIEW_CONTENT.tr,
                 style: Theme.of(context).textTheme.bodySmall,
                 textAlign: TextAlign.center,
               ),
               const HeightSpacer(heigth: 0.04),
-              CustomButton(
-                text: 'network-button'.tr,
+              CustomButton( 
+                text: Adresses.NETWORK_VIEW_BUTTON.tr,
                 onPressed: controller.loading,
               ),
             ]),

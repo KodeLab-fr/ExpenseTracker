@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/core/services/cache-service.dart';
 import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response_model.dart';
@@ -6,6 +7,7 @@ import 'package:expensetracker/src/auth/presentation/controllers/authentication-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+///Controller for the login screen
 class LoginController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
   final AuthController _authController = Get.find();
@@ -65,8 +67,8 @@ class LoginController extends GetxController {
         _authController.toggleObscureScreen();
         if (left.code == 401) {
           Get.snackbar(
-            'login-error_title'.tr,
-            'login-error'.tr,
+            Adresses.LOGIN_CONT_ERROR_TITLE.tr,
+            Adresses.LOGIN_CONT_ERROR_CONTENT.tr,
             backgroundColor: const Color(0xFFE57373),
           );
         } else if (left.code == 502) {

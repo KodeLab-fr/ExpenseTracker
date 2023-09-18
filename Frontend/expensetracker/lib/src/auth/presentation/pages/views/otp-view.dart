@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/core/themes.dart';
 import 'package:expensetracker/shared/components/custom_button.dart';
 import 'package:expensetracker/core/config.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
+/// The OTP view
 class OtpView extends GetView<OtpController> {
   const OtpView({super.key});
 
@@ -37,14 +39,14 @@ class OtpView extends GetView<OtpController> {
             ),
             const HeightSpacer(heigth: 0.05),
             Text(
-              'otp-title'.tr,
+              Adresses.OTP_VIEW_TITLE.tr,
               style: Theme.of(context).textTheme.displayLarge,
             ),
             const HeightSpacer(heigth: 0.02),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: Get.width * 0.05),
               child: Text(
-                'otp-text'.tr,
+                Adresses.OTP_VIEW_CONTENT.tr,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
@@ -81,7 +83,7 @@ class OtpView extends GetView<OtpController> {
             SizedBox(
               height: Get.height * 0.06,
               child: CustomButton(
-                text: 'otp-button'.tr,
+                text: Adresses.OTP_VIEW_BUTTON.tr,
                 onPressed: controller.verifyCode,
               ),
             ),
@@ -89,7 +91,7 @@ class OtpView extends GetView<OtpController> {
             GestureDetector(
               onTap: controller.resendCode,
               child: Text(
-                'otp-resend'.tr,
+                Adresses.OTP_VIEW_RESEND.tr,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),

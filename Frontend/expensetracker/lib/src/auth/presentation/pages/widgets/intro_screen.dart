@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 ///All visual elements of the intro screen
-class IntroScreen extends StatelessWidget {
+class IntroScreen extends GetView {
   final String pathSvg;
   final double heightSvg;
   final double heigthText;

@@ -1,4 +1,6 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/core/services/cache-service.dart';
+import 'package:expensetracker/core/themes.dart';
 import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:expensetracker/shared/models/server_response_model.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/authentication-controller.dart';
@@ -69,9 +71,9 @@ class RegisterController extends GetxController {
         _authController.toggleObscureScreen();
         if (left.code == 409) {
           Get.snackbar(
-            'register-error_title'.tr,
-            'register-error_content'.tr,
-            backgroundColor: const Color(0xFFE57373),
+            Adresses.REGISTER_CONT_ERROR_TITLE.tr,
+            Adresses.REGISTER_CONT_ERROR_CONTENT.tr,
+            backgroundColor: Palette.ERROR,
           );
         } else if (left.code == 502) {
           Get.offAllNamed('/down');

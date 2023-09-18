@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+/// Controller for the authentication screen
 class AuthController extends GetxController {
   final _obscureScreen = false.obs;
   final _isRegisterFormVisible = false.obs;

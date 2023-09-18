@@ -1,4 +1,5 @@
 import 'package:expensetracker/core/config.dart';
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/src/auth/presentation/pages/widgets/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,22 +27,22 @@ class IntroView extends GetView<PageController> {
                 pathSvg: 'assets/svg/project.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.35,
                 heigthText: 0.05,
-                title: 'intro-1_title'.tr,
-                text: 'intro-1_text'.tr,
+                title: Adresses.INTRO_VIEW_1_TITLE.tr,
+                text: Adresses.INTRO_VIEW_1_CONTENT.tr,
               ),
               IntroScreen(
                 pathSvg: 'assets/svg/expenses.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
                 heigthText: 0.1,
-                title: 'intro-2_title'.tr,
-                text: 'intro-2_text'.tr,
+                title: Adresses.INTRO_VIEW_2_TITLE.tr,
+                text: Adresses.INTRO_VIEW_2_CONTENT.tr,
               ),
               IntroScreen(
                 pathSvg: 'assets/svg/auth.svg',
                 heightSvg: GetPlatform.isDesktop ? 0.45 : 0.3,
                 heigthText: 0.1,
-                title: 'intro-3_title'.tr,
-                text: 'intro-3_text'.tr,
+                title: Adresses.INTRO_VIEW_3_TITLE.tr,
+                text: Adresses.INTRO_VIEW_3_CONTENT.tr,
               ),
             ],
           ),
@@ -54,7 +55,7 @@ class IntroView extends GetView<PageController> {
             children: [
               GestureDetector(
                 child: Text(
-                  'intro-skip'.tr,
+                  Adresses.INTRO_VIEW_SKIP.tr,
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 onTap: () {
@@ -77,7 +78,7 @@ class IntroView extends GetView<PageController> {
               ),
               GestureDetector(
                 child: Text(
-                  'intro-next'.tr,
+                  Adresses.INTRO_VIEW_NEXT.tr,
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 onTap: () {

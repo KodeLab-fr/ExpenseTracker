@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/core/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,12 +6,12 @@ import 'package:get/get.dart';
 class Failure {
   final Object error;
   final int? code;
-  const Failure( this.error, this.code);
+  const Failure(this.error, this.code);
 
   /// Show a dialog with the error message
   void showErrorDialog() {
     Get.defaultDialog(
-      title: 'error-title'.tr,
+      title: Adresses.FAILURES_CLASS_TITLE.tr,
       titlePadding: const EdgeInsets.only(top: 14, bottom: 10),
       content: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -18,12 +19,13 @@ class Failure {
       ),
       actions: [
         TextButton(
-          onPressed: () {
-            Get.back();
-          },
+          onPressed: Get.back,
           child: Text(
-            'ok'.tr,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Adresses.OK.tr,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],
@@ -33,7 +35,7 @@ class Failure {
   /// Show a snackbar with the error message
   void showErrorSnackBar() {
     Get.snackbar(
-      'error-title'.tr,
+      Adresses.FAILURES_CLASS_TITLE.tr,
       error.toString().replaceAll('Exception: ', ''),
       backgroundColor: Palette.ERROR,
       colorText: Palette.WHITE,

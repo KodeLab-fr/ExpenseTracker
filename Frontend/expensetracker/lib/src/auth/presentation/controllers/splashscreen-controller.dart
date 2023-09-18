@@ -3,6 +3,7 @@ import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:expensetracker/src/auth/presentation/controllers/network-controller.dart';
 import 'package:get/get.dart';
 
+/// Controller for the splash screen
 class SplashController extends GetxController {
   final LogRepoImplementation _logRepoImplementation = LogRepoImplementation();
 

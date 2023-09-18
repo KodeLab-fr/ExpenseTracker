@@ -1,7 +1,9 @@
 import 'package:expensetracker/core/errors/failures.dart';
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/src/auth/data/log-repo_impl.dart';
 import 'package:get/get.dart';
 
+/// Controller for the server down screen
 class ServerDownController extends GetxController {
   final _logRepoImplementation = LogRepoImplementation();
   final _obscureScreen = false.obs;
@@ -19,7 +21,8 @@ class ServerDownController extends GetxController {
       if (left.code == 418) {
         Get.offAllNamed('/noconnexion');
       } else if (left.code == 502) {
-        Failure('server_down-title'.tr, 502).showErrorSnackBar();
+        Failure(Adresses.SERV_DOWN_CONT_ERROR_TITLE.tr, 502)
+            .showErrorSnackBar();
       } else {
         Get.offAllNamed('/notfound');
       }

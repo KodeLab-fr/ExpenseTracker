@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/i18n/adresses.dart';
 import 'package:expensetracker/core/themes.dart';
 import 'package:expensetracker/src/calendar/presentation/pages/views/calendar-view.dart';
 import 'package:expensetracker/src/forms/presentation/pages/formpage.dart';
@@ -5,6 +6,7 @@ import 'package:expensetracker/src/home/presentation/pages/views/home-view.dart'
 import 'package:expensetracker/src/navigation/presentation/controllers/navbar_controller.dart';
 import 'package:expensetracker/src/navigation/presentation/controllers/side_drawer-controller.dart';
 import 'package:expensetracker/src/navigation/presentation/views/widgets/drawer.dart';
+import 'package:expensetracker/src/settings/presentation/view/settings-view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +36,7 @@ class NavigationView extends GetView<NavbarController> {
               },
             ),
             title: Text(
-              'home-title'.tr,
+              Adresses.APP_NAME.tr,
               style: theme.textTheme.titleMedium,
             ),
             backgroundColor: Palette.PRIMARY,
@@ -47,9 +49,7 @@ class NavigationView extends GetView<NavbarController> {
                 HomeView(),
                 ScheduleView(),
                 FormPage(),
-                Center(
-                  child: Text('Settings page is working (debug)'),
-                ),
+                SettingsView(),
               ],
             );
           }),
@@ -64,19 +64,19 @@ class NavigationView extends GetView<NavbarController> {
                 items: [
                   controller.bottomNavigationBarItem(
                     icon: CupertinoIcons.home,
-                    label: 'navbar-home'.tr,
+                    label: Adresses.NAVIGATION_VIEW_HOME.tr,
                   ),
                   controller.bottomNavigationBarItem(
                     icon: CupertinoIcons.calendar,
-                    label: 'navbar-calendar'.tr,
+                    label: Adresses.NAVIGATION_VIEW_CALENDAR.tr,
                   ),
                   controller.bottomNavigationBarItem(
                     icon: CupertinoIcons.rectangle_paperclip,
-                    label: 'navbar-forms'.tr,
+                    label: Adresses.NAVIGATION_VIEW_FORMS.tr,
                   ),
                   controller.bottomNavigationBarItem(
                     icon: CupertinoIcons.settings,
-                    label: 'navbar-settings'.tr,
+                    label: Adresses.NAVIGATION_VIEW_SETTINGS.tr,
                   ),
                 ]);
           }),
