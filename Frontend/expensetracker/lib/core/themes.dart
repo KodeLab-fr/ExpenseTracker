@@ -16,7 +16,6 @@ class Palette {
 
 class Themes {
   final ligthTheme = ThemeData.light().copyWith(
-    
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
       onSurface: Palette.BLACK,
@@ -138,16 +137,16 @@ class Themes {
   final darkTheme = ThemeData.dark().copyWith(
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
-      onSurface: Colors.black,
-      surface: Colors.black,
-      background: Colors.white,
-      primary: Color(0xFF363f93),
-      secondary: Color.fromARGB(255, 77, 89, 194),
-      error: Colors.redAccent,
-      onPrimary: Colors.white,
-      onSecondary: Colors.white,
-      onBackground: Colors.black,
-      onError: Colors.white,
+      onSurface: Palette.WHITE,
+      surface: Palette.WHITE,
+      background: Palette.WHITE,
+      primary: Palette.SECONDARY,
+      secondary: Palette.SECONDARY,
+      error: Palette.ERROR,
+      onPrimary: Palette.BLACK,
+      onSecondary: Palette.WHITE,
+      onBackground: Palette.BLACK,
+      onError: Palette.WHITE,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

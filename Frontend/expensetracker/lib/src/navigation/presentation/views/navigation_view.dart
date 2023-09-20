@@ -6,7 +6,7 @@ import 'package:expensetracker/src/home/presentation/pages/views/home-view.dart'
 import 'package:expensetracker/src/navigation/presentation/controllers/navbar_controller.dart';
 import 'package:expensetracker/src/navigation/presentation/controllers/side_drawer-controller.dart';
 import 'package:expensetracker/src/navigation/presentation/views/widgets/drawer.dart';
-import 'package:expensetracker/src/settings/presentation/view/settings-view.dart';
+import 'package:expensetracker/src/settings/presentation/views/settings-view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
